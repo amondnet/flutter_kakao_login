@@ -15,6 +15,10 @@ import com.kakao.sdk.auth.LoginClient
 import com.kakao.sdk.auth.TokenManagerProvider
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.KakaoSdk
+import com.kakao.sdk.common.model.ApiError
+import com.kakao.sdk.common.model.AuthError
+import com.kakao.sdk.common.model.ClientError
+import com.kakao.sdk.common.model.KakaoSdkError
 import com.kakao.sdk.common.util.Utility
 import com.kakao.sdk.user.UserApiClient
 import com.kakao.sdk.user.model.AgeRange
@@ -78,11 +82,11 @@ public class FlutterKakaoLoginPlugin : FlutterPlugin,
             "init" -> {
                 val apiKey = call.arguments as String
                 Log.d(TAG, "[onMethodCall] -> init")
-                if ( applicationContext != null ) {
-                    KakaoSdk.init(applicationContext!!,apiKey )
+                if (applicationContext != null) {
+                    KakaoSdk.init(applicationContext!!, apiKey)
                     result.success(null)
                 } else {
-                    result.error("INIT_ERR", "application context is not exists"," ")
+                    result.error("INIT_ERR", "application context is not exists", " ")
                 }
             }
             "logIn" -> {
@@ -169,7 +173,11 @@ public class FlutterKakaoLoginPlugin : FlutterPlugin,
             Log.d(TAG, "로그인 Callback")
             if (error != null) {
                 Log.e(TAG, "로그인 실패", error)
-                result.error("LOGIN_ERR", "로그인 실패", error.localizedMessage)
+                if (error is KakaoSdkError) {
+                    handleKakaoError(error, result)
+                } else {
+                    result.error("SdkError", "로그인 실패", error.localizedMessage)
+                }
             } else if (token != null) {
                 Log.i(TAG, "로그인 성공 ${token.accessToken}")
                 result.success(token.toJson())
@@ -178,13 +186,13 @@ public class FlutterKakaoLoginPlugin : FlutterPlugin,
 
         // 카카오톡이 설치되어 있으면 카카오톡으로 로그인, 아니면 카카오계정으로 로그인
         Log.d(TAG, "카카오톡이 설치되어 있으면 카카오톡으로 로그인, 아니면 카카오계정으로 로그인")
-        //if (LoginClient.instance.isKakaoTalkLoginAvailable(activity!!)) {
-        //    Log.d(TAG, "카카오톡으로 로그인")
-        //    LoginClient.instance.loginWithKakaoTalk(activity!!, callback = callback)
-        //} else {
+        if (LoginClient.instance.isKakaoTalkLoginAvailable(activity!!)) {
+            Log.d(TAG, "카카오톡으로 로그인")
+            LoginClient.instance.loginWithKakaoTalk(activity!!, callback = callback)
+        } else {
             Log.d(TAG, "카카오계정으로 로그인")
             LoginClient.instance.loginWithKakaoAccount(activity!!, callback = callback)
-        //}
+        }
     }
 
     // logout
@@ -194,7 +202,11 @@ public class FlutterKakaoLoginPlugin : FlutterPlugin,
         UserApiClient.instance.logout { error ->
             if (error != null) {
                 Log.e(TAG, "로그아웃 실패. SDK에서 토큰 삭제됨", error)
-                result.error("LOGOUT_ERR", "로그아웃 실패.", error.localizedMessage)
+                if (error is KakaoSdkError) {
+                    handleKakaoError(error, result)
+                } else {
+                    result.error("SdkError", "로그아웃 실패", error.localizedMessage)
+                }
             } else {
                 Log.i(TAG, "로그아웃 성공. SDK에서 토큰 삭제됨")
                 uiThreadHandler.post(Runnable {
@@ -211,7 +223,11 @@ public class FlutterKakaoLoginPlugin : FlutterPlugin,
         UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
             if (error != null) {
                 Log.e(TAG, "토큰 정보 보기 실패", error)
-                result.error("TOKEN_INFO_ERR", "토큰 정보 보기 실패", error.localizedMessage)
+                if (error is KakaoSdkError) {
+                    handleKakaoError(error, result)
+                } else {
+                    result.error("SdkError", "토큰 정보 실패", error.localizedMessage)
+                }
             } else if (tokenInfo != null) {
                 Log.i(TAG, "토큰 정보 보기 성공" +
                         "\n회원번호: ${tokenInfo.id}" +
@@ -233,13 +249,13 @@ public class FlutterKakaoLoginPlugin : FlutterPlugin,
     private fun currentToken(result: Result) {
         try {
             val token = TokenManagerProvider.instance.manager.getToken()
-            if (token != null) {
-                return result.success(token.toJson())
+            return result.success(token?.toJson())
+        } catch (error: Throwable) {
+            if (error is KakaoSdkError) {
+                handleKakaoError(error, result)
             } else {
-                result.error("TOKEN_IS_NOT_EXISTS", "Saved token is not exists.", "");
+                result.error("SdkError", "토큰 정보 실패", error.localizedMessage)
             }
-        } catch (e: Throwable) {
-            result.error("TOKEN_ERROR", "Get saved token error", e.localizedMessage);
         }
     }
 
@@ -357,4 +373,19 @@ public class FlutterKakaoLoginPlugin : FlutterPlugin,
             AgeRange.UNKNOWN -> ""
         }
     }
+
 }
+
+fun handleKakaoError(error: KakaoSdkError, result: Result) {
+    when (error) {
+        is AuthError -> {
+            result.error("AuthError", error.reason.name, error.msg)
+        }
+        is ApiError ->
+            result.error("ApiError", error.reason.name, error.msg)
+        is ClientError ->
+            result.error("ClientError", error.reason.name, error.msg)
+    }
+}
+
+

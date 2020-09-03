@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/services.dart';
+import 'package:flutter_kakao_login/src/kakao_login_error.dart';
+import 'package:async/async.dart';
 
 class FlutterKakaoLogin {
   static const MethodChannel _channel =
@@ -29,33 +31,33 @@ class FlutterKakaoLogin {
   }
 
   // Get UserMe Method
-  Future<KakaoLoginResult> getUserMe() async {
+  Future<Result<KakaoLoginResult>> getUserMe() async {
     try {
       final result =
           await _channel.invokeMapMethod<String, dynamic>('getUserMe');
-      return _delayedToResult(KakaoLoginResult._(result));
+      return _delayedToResult(Result.value(KakaoLoginResult._(result)));
     } on PlatformException catch (e) {
-      throw e;
+      return Result.error(KakaoSdkError.fromPlatformException(e));
     }
   }
 
   // Login Method
-  Future<KakaoToken> logIn() async {
+  Future<Result<KakaoToken>> logIn() async {
     try {
       final result = await _channel.invokeMapMethod<String, dynamic>('logIn');
-      return _delayedToResult(KakaoToken.fromJson(result));
+      return _delayedToResult(Result.value(KakaoToken.fromJson(result)));
     } on PlatformException catch (e) {
-      throw e;
+      return Result.error(KakaoSdkError.fromPlatformException(e));
     }
   }
 
   // Logout Method
-  Future<KakaoLoginResult> logOut() async {
+  Future<Result<KakaoLoginResult>> logOut() async {
     try {
       final result = await _channel.invokeMapMethod<String, dynamic>('logOut');
-      return _delayedToResult(KakaoLoginResult._(result));
+      return _delayedToResult(Result.value(KakaoLoginResult._(result)));
     } on PlatformException catch (e) {
-      throw e;
+      return Result.error(KakaoSdkError.fromPlatformException(e));
     }
   }
 
