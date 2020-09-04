@@ -217,7 +217,7 @@ class _$_AuthError extends _AuthError {
   String get message {
     if (_didmessage == false) {
       _didmessage = true;
-      _message = when((msg, details) => null,
+      _message = when((msg, details) => msg,
           invalidRequest: (_) => "요청 파라미터 오류",
           invalidClient: (_) => "유효하지 않은 앱",
           invalidScope: (_) => "유효하지 않은 scope ID",
@@ -408,7 +408,7 @@ class _$AuthErrorInvalidRequest extends AuthErrorInvalidRequest {
   String get message {
     if (_didmessage == false) {
       _didmessage = true;
-      _message = when((msg, details) => null,
+      _message = when((msg, details) => msg,
           invalidRequest: (_) => "요청 파라미터 오류",
           invalidClient: (_) => "유효하지 않은 앱",
           invalidScope: (_) => "유효하지 않은 scope ID",
@@ -595,7 +595,7 @@ class _$AuthErrorInvalidClient extends AuthErrorInvalidClient {
   String get message {
     if (_didmessage == false) {
       _didmessage = true;
-      _message = when((msg, details) => null,
+      _message = when((msg, details) => msg,
           invalidRequest: (_) => "요청 파라미터 오류",
           invalidClient: (_) => "유효하지 않은 앱",
           invalidScope: (_) => "유효하지 않은 scope ID",
@@ -782,7 +782,7 @@ class _$AuthErrorInvalidScope extends AuthErrorInvalidScope {
   String get message {
     if (_didmessage == false) {
       _didmessage = true;
-      _message = when((msg, details) => null,
+      _message = when((msg, details) => msg,
           invalidRequest: (_) => "요청 파라미터 오류",
           invalidClient: (_) => "유효하지 않은 앱",
           invalidScope: (_) => "유효하지 않은 scope ID",
@@ -969,7 +969,7 @@ class _$AuthErrorInvalidGrant extends AuthErrorInvalidGrant {
   String get message {
     if (_didmessage == false) {
       _didmessage = true;
-      _message = when((msg, details) => null,
+      _message = when((msg, details) => msg,
           invalidRequest: (_) => "요청 파라미터 오류",
           invalidClient: (_) => "유효하지 않은 앱",
           invalidScope: (_) => "유효하지 않은 scope ID",
@@ -1156,7 +1156,7 @@ class _$AuthErrorMisconfigured extends AuthErrorMisconfigured {
   String get message {
     if (_didmessage == false) {
       _didmessage = true;
-      _message = when((msg, details) => null,
+      _message = when((msg, details) => msg,
           invalidRequest: (_) => "요청 파라미터 오류",
           invalidClient: (_) => "유효하지 않은 앱",
           invalidScope: (_) => "유효하지 않은 scope ID",
@@ -1343,7 +1343,7 @@ class _$AuthErrorUnauthorized extends AuthErrorUnauthorized {
   String get message {
     if (_didmessage == false) {
       _didmessage = true;
-      _message = when((msg, details) => null,
+      _message = when((msg, details) => msg,
           invalidRequest: (_) => "요청 파라미터 오류",
           invalidClient: (_) => "유효하지 않은 앱",
           invalidScope: (_) => "유효하지 않은 scope ID",
@@ -1530,7 +1530,7 @@ class _$AuthErrorAccessDenied extends AuthErrorAccessDenied {
   String get message {
     if (_didmessage == false) {
       _didmessage = true;
-      _message = when((msg, details) => null,
+      _message = when((msg, details) => msg,
           invalidRequest: (_) => "요청 파라미터 오류",
           invalidClient: (_) => "유효하지 않은 앱",
           invalidScope: (_) => "유효하지 않은 scope ID",
@@ -1717,7 +1717,7 @@ class _$AuthErrorServerError extends AuthErrorServerError {
   String get message {
     if (_didmessage == false) {
       _didmessage = true;
-      _message = when((msg, details) => null,
+      _message = when((msg, details) => msg,
           invalidRequest: (_) => "요청 파라미터 오류",
           invalidClient: (_) => "유효하지 않은 앱",
           invalidScope: (_) => "유효하지 않은 scope ID",
@@ -1903,7 +1903,7 @@ class _$AuthErrorUnknown extends AuthErrorUnknown {
   String get message {
     if (_didmessage == false) {
       _didmessage = true;
-      _message = when((msg, details) => null,
+      _message = when((msg, details) => msg,
           invalidRequest: (_) => "요청 파라미터 오류",
           invalidClient: (_) => "유효하지 않은 앱",
           invalidScope: (_) => "유효하지 않은 scope ID",

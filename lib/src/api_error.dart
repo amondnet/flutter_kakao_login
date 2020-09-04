@@ -9,7 +9,7 @@ part 'api_error.freezed.dart';
 @freezed
 abstract class ApiError extends KakaoSdkError implements _$ApiError {
   ApiError._() : super();
-  factory ApiError(String msg) = _ApiError;
+  factory ApiError(String msg, String details) = _ApiError;
 
   factory ApiError.internalError({String details}) = ApiErrorInternalError;
   factory ApiError.illegalParams({String details}) = ApiErrorIllegalParams;
@@ -19,11 +19,15 @@ abstract class ApiError extends KakaoSdkError implements _$ApiError {
   factory ApiError.unknown({String details}) = ApiErrorUnknown;
 
   @late
-  String get message => when((msg) => null,
+  @override
+  String get message => when((msg, details) => msg,
       internalError: (_) => "기타 서버 에러",
       illegalParams: (_) => "잘못된 파라미터",
       unsupportedApi: (_) => "지원되지 않는 API",
       unknown: (_) => "기타 에러");
+
+  @override
+  String get type => "ApiError";
 
   static ApiError fromPlatformException(PlatformException e) {
     switch (e.code) {

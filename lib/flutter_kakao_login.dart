@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:flutter_kakao_login/src/kakao_login_error.dart';
 import 'package:async/async.dart';
+export 'src/result_extension.dart';
 
 class FlutterKakaoLogin {
   static const MethodChannel _channel =

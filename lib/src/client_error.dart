@@ -7,9 +7,10 @@ part 'client_error.freezed.dart';
 
 @freezed
 abstract class ClientError extends KakaoSdkError implements _$ClientError {
+  static const String TYPE = 'ClientError';
   ClientError._();
 
-  factory ClientError() = _ClientError;
+  factory ClientError(String msg, String details) = _ClientError;
 
   /// 기타 에러
   factory ClientError.unknown({String details}) = ClientErrorUnknown;
@@ -30,8 +31,11 @@ abstract class ClientError extends KakaoSdkError implements _$ClientError {
   /// 정상적으로 실행할 수 없는 상태
   factory ClientError.llegalState({String details}) = ClientErrorIllegalState;
 
+  @override
+  String get type => TYPE;
+
   @late
-  String get message => when(() => "알수 없음",
+  String get message => when((msg, __) => msg,
       unknown: (_) => "기타 에러",
       cancelled: (_) => "요청 취소",
       tokenNotFound: (_) => "API 요청에 사용할 토큰이 없음",

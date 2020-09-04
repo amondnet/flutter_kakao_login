@@ -13,9 +13,10 @@ class _$ApiErrorTearOff {
   const _$ApiErrorTearOff();
 
 // ignore: unused_element
-  _ApiError call(String msg) {
+  _ApiError call(String msg, String details) {
     return _ApiError(
       msg,
+      details,
     );
   }
 
@@ -52,9 +53,11 @@ class _$ApiErrorTearOff {
 const $ApiError = _$ApiErrorTearOff();
 
 mixin _$ApiError {
+  String get details;
+
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(String msg), {
+    Result $default(String msg, String details), {
     @required Result internalError(String details),
     @required Result illegalParams(String details),
     @required Result unsupportedApi(String details),
@@ -62,7 +65,7 @@ mixin _$ApiError {
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(String msg), {
+    Result $default(String msg, String details), {
     Result internalError(String details),
     Result illegalParams(String details),
     Result unsupportedApi(String details),
@@ -86,11 +89,14 @@ mixin _$ApiError {
     Result unknown(ApiErrorUnknown value),
     @required Result orElse(),
   });
+
+  $ApiErrorCopyWith<ApiError> get copyWith;
 }
 
 abstract class $ApiErrorCopyWith<$Res> {
   factory $ApiErrorCopyWith(ApiError value, $Res Function(ApiError) then) =
       _$ApiErrorCopyWithImpl<$Res>;
+  $Res call({String details});
 }
 
 class _$ApiErrorCopyWithImpl<$Res> implements $ApiErrorCopyWith<$Res> {
@@ -99,12 +105,22 @@ class _$ApiErrorCopyWithImpl<$Res> implements $ApiErrorCopyWith<$Res> {
   final ApiError _value;
   // ignore: unused_field
   final $Res Function(ApiError) _then;
+
+  @override
+  $Res call({
+    Object details = freezed,
+  }) {
+    return _then(_value.copyWith(
+      details: details == freezed ? _value.details : details as String,
+    ));
+  }
 }
 
-abstract class _$ApiErrorCopyWith<$Res> {
+abstract class _$ApiErrorCopyWith<$Res> implements $ApiErrorCopyWith<$Res> {
   factory _$ApiErrorCopyWith(_ApiError value, $Res Function(_ApiError) then) =
       __$ApiErrorCopyWithImpl<$Res>;
-  $Res call({String msg});
+  @override
+  $Res call({String msg, String details});
 }
 
 class __$ApiErrorCopyWithImpl<$Res> extends _$ApiErrorCopyWithImpl<$Res>
@@ -118,20 +134,25 @@ class __$ApiErrorCopyWithImpl<$Res> extends _$ApiErrorCopyWithImpl<$Res>
   @override
   $Res call({
     Object msg = freezed,
+    Object details = freezed,
   }) {
     return _then(_ApiError(
       msg == freezed ? _value.msg : msg as String,
+      details == freezed ? _value.details : details as String,
     ));
   }
 }
 
 class _$_ApiError extends _ApiError {
-  _$_ApiError(this.msg)
+  _$_ApiError(this.msg, this.details)
       : assert(msg != null),
+        assert(details != null),
         super._();
 
   @override
   final String msg;
+  @override
+  final String details;
 
   bool _didmessage = false;
   String _message;
@@ -140,7 +161,7 @@ class _$_ApiError extends _ApiError {
   String get message {
     if (_didmessage == false) {
       _didmessage = true;
-      _message = when((msg) => null,
+      _message = when((msg, details) => msg,
           internalError: (_) => "기타 서버 에러",
           illegalParams: (_) => "잘못된 파라미터",
           unsupportedApi: (_) => "지원되지 않는 API",
@@ -151,7 +172,7 @@ class _$_ApiError extends _ApiError {
 
   @override
   String toString() {
-    return 'ApiError(msg: $msg, message: $message)';
+    return 'ApiError(msg: $msg, details: $details, message: $message)';
   }
 
   @override
@@ -159,12 +180,16 @@ class _$_ApiError extends _ApiError {
     return identical(this, other) ||
         (other is _ApiError &&
             (identical(other.msg, msg) ||
-                const DeepCollectionEquality().equals(other.msg, msg)));
+                const DeepCollectionEquality().equals(other.msg, msg)) &&
+            (identical(other.details, details) ||
+                const DeepCollectionEquality().equals(other.details, details)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(msg);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(msg) ^
+      const DeepCollectionEquality().hash(details);
 
   @override
   _$ApiErrorCopyWith<_ApiError> get copyWith =>
@@ -173,7 +198,7 @@ class _$_ApiError extends _ApiError {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(String msg), {
+    Result $default(String msg, String details), {
     @required Result internalError(String details),
     @required Result illegalParams(String details),
     @required Result unsupportedApi(String details),
@@ -184,13 +209,13 @@ class _$_ApiError extends _ApiError {
     assert(illegalParams != null);
     assert(unsupportedApi != null);
     assert(unknown != null);
-    return $default(msg);
+    return $default(msg, details);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(String msg), {
+    Result $default(String msg, String details), {
     Result internalError(String details),
     Result illegalParams(String details),
     Result unsupportedApi(String details),
@@ -199,7 +224,7 @@ class _$_ApiError extends _ApiError {
   }) {
     assert(orElse != null);
     if ($default != null) {
-      return $default(msg);
+      return $default(msg, details);
     }
     return orElse();
   }
@@ -241,16 +266,21 @@ class _$_ApiError extends _ApiError {
 
 abstract class _ApiError extends ApiError {
   _ApiError._() : super._();
-  factory _ApiError(String msg) = _$_ApiError;
+  factory _ApiError(String msg, String details) = _$_ApiError;
 
   String get msg;
+  @override
+  String get details;
+  @override
   _$ApiErrorCopyWith<_ApiError> get copyWith;
 }
 
-abstract class $ApiErrorInternalErrorCopyWith<$Res> {
+abstract class $ApiErrorInternalErrorCopyWith<$Res>
+    implements $ApiErrorCopyWith<$Res> {
   factory $ApiErrorInternalErrorCopyWith(ApiErrorInternalError value,
           $Res Function(ApiErrorInternalError) then) =
       _$ApiErrorInternalErrorCopyWithImpl<$Res>;
+  @override
   $Res call({String details});
 }
 
@@ -287,7 +317,7 @@ class _$ApiErrorInternalError extends ApiErrorInternalError {
   String get message {
     if (_didmessage == false) {
       _didmessage = true;
-      _message = when((msg) => null,
+      _message = when((msg, details) => msg,
           internalError: (_) => "기타 서버 에러",
           illegalParams: (_) => "잘못된 파라미터",
           unsupportedApi: (_) => "지원되지 않는 API",
@@ -321,7 +351,7 @@ class _$ApiErrorInternalError extends ApiErrorInternalError {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(String msg), {
+    Result $default(String msg, String details), {
     @required Result internalError(String details),
     @required Result illegalParams(String details),
     @required Result unsupportedApi(String details),
@@ -338,7 +368,7 @@ class _$ApiErrorInternalError extends ApiErrorInternalError {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(String msg), {
+    Result $default(String msg, String details), {
     Result internalError(String details),
     Result illegalParams(String details),
     Result unsupportedApi(String details),
@@ -391,14 +421,18 @@ abstract class ApiErrorInternalError extends ApiError {
   ApiErrorInternalError._() : super._();
   factory ApiErrorInternalError({String details}) = _$ApiErrorInternalError;
 
+  @override
   String get details;
+  @override
   $ApiErrorInternalErrorCopyWith<ApiErrorInternalError> get copyWith;
 }
 
-abstract class $ApiErrorIllegalParamsCopyWith<$Res> {
+abstract class $ApiErrorIllegalParamsCopyWith<$Res>
+    implements $ApiErrorCopyWith<$Res> {
   factory $ApiErrorIllegalParamsCopyWith(ApiErrorIllegalParams value,
           $Res Function(ApiErrorIllegalParams) then) =
       _$ApiErrorIllegalParamsCopyWithImpl<$Res>;
+  @override
   $Res call({String details});
 }
 
@@ -435,7 +469,7 @@ class _$ApiErrorIllegalParams extends ApiErrorIllegalParams {
   String get message {
     if (_didmessage == false) {
       _didmessage = true;
-      _message = when((msg) => null,
+      _message = when((msg, details) => msg,
           internalError: (_) => "기타 서버 에러",
           illegalParams: (_) => "잘못된 파라미터",
           unsupportedApi: (_) => "지원되지 않는 API",
@@ -469,7 +503,7 @@ class _$ApiErrorIllegalParams extends ApiErrorIllegalParams {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(String msg), {
+    Result $default(String msg, String details), {
     @required Result internalError(String details),
     @required Result illegalParams(String details),
     @required Result unsupportedApi(String details),
@@ -486,7 +520,7 @@ class _$ApiErrorIllegalParams extends ApiErrorIllegalParams {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(String msg), {
+    Result $default(String msg, String details), {
     Result internalError(String details),
     Result illegalParams(String details),
     Result unsupportedApi(String details),
@@ -539,14 +573,18 @@ abstract class ApiErrorIllegalParams extends ApiError {
   ApiErrorIllegalParams._() : super._();
   factory ApiErrorIllegalParams({String details}) = _$ApiErrorIllegalParams;
 
+  @override
   String get details;
+  @override
   $ApiErrorIllegalParamsCopyWith<ApiErrorIllegalParams> get copyWith;
 }
 
-abstract class $ApiErrorUnsupportedApiCopyWith<$Res> {
+abstract class $ApiErrorUnsupportedApiCopyWith<$Res>
+    implements $ApiErrorCopyWith<$Res> {
   factory $ApiErrorUnsupportedApiCopyWith(ApiErrorUnsupportedApi value,
           $Res Function(ApiErrorUnsupportedApi) then) =
       _$ApiErrorUnsupportedApiCopyWithImpl<$Res>;
+  @override
   $Res call({String details});
 }
 
@@ -583,7 +621,7 @@ class _$ApiErrorUnsupportedApi extends ApiErrorUnsupportedApi {
   String get message {
     if (_didmessage == false) {
       _didmessage = true;
-      _message = when((msg) => null,
+      _message = when((msg, details) => msg,
           internalError: (_) => "기타 서버 에러",
           illegalParams: (_) => "잘못된 파라미터",
           unsupportedApi: (_) => "지원되지 않는 API",
@@ -617,7 +655,7 @@ class _$ApiErrorUnsupportedApi extends ApiErrorUnsupportedApi {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(String msg), {
+    Result $default(String msg, String details), {
     @required Result internalError(String details),
     @required Result illegalParams(String details),
     @required Result unsupportedApi(String details),
@@ -634,7 +672,7 @@ class _$ApiErrorUnsupportedApi extends ApiErrorUnsupportedApi {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(String msg), {
+    Result $default(String msg, String details), {
     Result internalError(String details),
     Result illegalParams(String details),
     Result unsupportedApi(String details),
@@ -687,14 +725,18 @@ abstract class ApiErrorUnsupportedApi extends ApiError {
   ApiErrorUnsupportedApi._() : super._();
   factory ApiErrorUnsupportedApi({String details}) = _$ApiErrorUnsupportedApi;
 
+  @override
   String get details;
+  @override
   $ApiErrorUnsupportedApiCopyWith<ApiErrorUnsupportedApi> get copyWith;
 }
 
-abstract class $ApiErrorUnknownCopyWith<$Res> {
+abstract class $ApiErrorUnknownCopyWith<$Res>
+    implements $ApiErrorCopyWith<$Res> {
   factory $ApiErrorUnknownCopyWith(
           ApiErrorUnknown value, $Res Function(ApiErrorUnknown) then) =
       _$ApiErrorUnknownCopyWithImpl<$Res>;
+  @override
   $Res call({String details});
 }
 
@@ -730,7 +772,7 @@ class _$ApiErrorUnknown extends ApiErrorUnknown {
   String get message {
     if (_didmessage == false) {
       _didmessage = true;
-      _message = when((msg) => null,
+      _message = when((msg, details) => msg,
           internalError: (_) => "기타 서버 에러",
           illegalParams: (_) => "잘못된 파라미터",
           unsupportedApi: (_) => "지원되지 않는 API",
@@ -763,7 +805,7 @@ class _$ApiErrorUnknown extends ApiErrorUnknown {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(String msg), {
+    Result $default(String msg, String details), {
     @required Result internalError(String details),
     @required Result illegalParams(String details),
     @required Result unsupportedApi(String details),
@@ -780,7 +822,7 @@ class _$ApiErrorUnknown extends ApiErrorUnknown {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(String msg), {
+    Result $default(String msg, String details), {
     Result internalError(String details),
     Result illegalParams(String details),
     Result unsupportedApi(String details),
@@ -833,6 +875,8 @@ abstract class ApiErrorUnknown extends ApiError {
   ApiErrorUnknown._() : super._();
   factory ApiErrorUnknown({String details}) = _$ApiErrorUnknown;
 
+  @override
   String get details;
+  @override
   $ApiErrorUnknownCopyWith<ApiErrorUnknown> get copyWith;
 }

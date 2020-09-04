@@ -7,6 +7,7 @@ part 'auth_error.freezed.dart';
 
 @freezed
 abstract class AuthError extends KakaoSdkError implements _$AuthError {
+  static const TYPE = "AuthError";
   AuthError._();
 
   factory AuthError(String msg, String details) = _AuthError;
@@ -34,8 +35,11 @@ abstract class AuthError extends KakaoSdkError implements _$AuthError {
   /// 접근이 거부 됨 (동의 취소)
   factory AuthError.unknown({String details}) = AuthErrorUnknown;
 
+  @override
+  String get type => TYPE;
+
   @late
-  String get message => when((msg, details) => null,
+  String get message => when((msg, details) => msg,
       invalidRequest: (_) => "요청 파라미터 오류",
       invalidClient: (_) => "유효하지 않은 앱",
       invalidScope: (_) => "유효하지 않은 scope ID",

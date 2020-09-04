@@ -13,8 +13,11 @@ class _$ClientErrorTearOff {
   const _$ClientErrorTearOff();
 
 // ignore: unused_element
-  _ClientError call() {
-    return _ClientError();
+  _ClientError call(String msg, String details) {
+    return _ClientError(
+      msg,
+      details,
+    );
   }
 
 // ignore: unused_element
@@ -64,9 +67,11 @@ class _$ClientErrorTearOff {
 const $ClientError = _$ClientErrorTearOff();
 
 mixin _$ClientError {
+  String get details;
+
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(), {
+    Result $default(String msg, String details), {
     @required Result unknown(String details),
     @required Result cancelled(String details),
     @required Result tokenNotFound(String details),
@@ -76,7 +81,7 @@ mixin _$ClientError {
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(), {
+    Result $default(String msg, String details), {
     Result unknown(String details),
     Result cancelled(String details),
     Result tokenNotFound(String details),
@@ -106,12 +111,15 @@ mixin _$ClientError {
     Result llegalState(ClientErrorIllegalState value),
     @required Result orElse(),
   });
+
+  $ClientErrorCopyWith<ClientError> get copyWith;
 }
 
 abstract class $ClientErrorCopyWith<$Res> {
   factory $ClientErrorCopyWith(
           ClientError value, $Res Function(ClientError) then) =
       _$ClientErrorCopyWithImpl<$Res>;
+  $Res call({String details});
 }
 
 class _$ClientErrorCopyWithImpl<$Res> implements $ClientErrorCopyWith<$Res> {
@@ -120,12 +128,24 @@ class _$ClientErrorCopyWithImpl<$Res> implements $ClientErrorCopyWith<$Res> {
   final ClientError _value;
   // ignore: unused_field
   final $Res Function(ClientError) _then;
+
+  @override
+  $Res call({
+    Object details = freezed,
+  }) {
+    return _then(_value.copyWith(
+      details: details == freezed ? _value.details : details as String,
+    ));
+  }
 }
 
-abstract class _$ClientErrorCopyWith<$Res> {
+abstract class _$ClientErrorCopyWith<$Res>
+    implements $ClientErrorCopyWith<$Res> {
   factory _$ClientErrorCopyWith(
           _ClientError value, $Res Function(_ClientError) then) =
       __$ClientErrorCopyWithImpl<$Res>;
+  @override
+  $Res call({String msg, String details});
 }
 
 class __$ClientErrorCopyWithImpl<$Res> extends _$ClientErrorCopyWithImpl<$Res>
@@ -136,10 +156,29 @@ class __$ClientErrorCopyWithImpl<$Res> extends _$ClientErrorCopyWithImpl<$Res>
 
   @override
   _ClientError get _value => super._value as _ClientError;
+
+  @override
+  $Res call({
+    Object msg = freezed,
+    Object details = freezed,
+  }) {
+    return _then(_ClientError(
+      msg == freezed ? _value.msg : msg as String,
+      details == freezed ? _value.details : details as String,
+    ));
+  }
 }
 
 class _$_ClientError extends _ClientError {
-  _$_ClientError() : super._();
+  _$_ClientError(this.msg, this.details)
+      : assert(msg != null),
+        assert(details != null),
+        super._();
+
+  @override
+  final String msg;
+  @override
+  final String details;
 
   bool _didmessage = false;
   String _message;
@@ -148,7 +187,7 @@ class _$_ClientError extends _ClientError {
   String get message {
     if (_didmessage == false) {
       _didmessage = true;
-      _message = when(() => "알수 없음",
+      _message = when((msg, __) => msg,
           unknown: (_) => "기타 에러",
           cancelled: (_) => "요청 취소",
           tokenNotFound: (_) => "API 요청에 사용할 토큰이 없음",
@@ -161,21 +200,33 @@ class _$_ClientError extends _ClientError {
 
   @override
   String toString() {
-    return 'ClientError(message: $message)';
+    return 'ClientError(msg: $msg, details: $details, message: $message)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _ClientError);
+    return identical(this, other) ||
+        (other is _ClientError &&
+            (identical(other.msg, msg) ||
+                const DeepCollectionEquality().equals(other.msg, msg)) &&
+            (identical(other.details, details) ||
+                const DeepCollectionEquality().equals(other.details, details)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(msg) ^
+      const DeepCollectionEquality().hash(details);
+
+  @override
+  _$ClientErrorCopyWith<_ClientError> get copyWith =>
+      __$ClientErrorCopyWithImpl<_ClientError>(this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(), {
+    Result $default(String msg, String details), {
     @required Result unknown(String details),
     @required Result cancelled(String details),
     @required Result tokenNotFound(String details),
@@ -190,13 +241,13 @@ class _$_ClientError extends _ClientError {
     assert(notSupported != null);
     assert(badParameter != null);
     assert(llegalState != null);
-    return $default();
+    return $default(msg, details);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(), {
+    Result $default(String msg, String details), {
     Result unknown(String details),
     Result cancelled(String details),
     Result tokenNotFound(String details),
@@ -207,7 +258,7 @@ class _$_ClientError extends _ClientError {
   }) {
     assert(orElse != null);
     if ($default != null) {
-      return $default();
+      return $default(msg, details);
     }
     return orElse();
   }
@@ -255,13 +306,21 @@ class _$_ClientError extends _ClientError {
 
 abstract class _ClientError extends ClientError {
   _ClientError._() : super._();
-  factory _ClientError() = _$_ClientError;
+  factory _ClientError(String msg, String details) = _$_ClientError;
+
+  String get msg;
+  @override
+  String get details;
+  @override
+  _$ClientErrorCopyWith<_ClientError> get copyWith;
 }
 
-abstract class $ClientErrorUnknownCopyWith<$Res> {
+abstract class $ClientErrorUnknownCopyWith<$Res>
+    implements $ClientErrorCopyWith<$Res> {
   factory $ClientErrorUnknownCopyWith(
           ClientErrorUnknown value, $Res Function(ClientErrorUnknown) then) =
       _$ClientErrorUnknownCopyWithImpl<$Res>;
+  @override
   $Res call({String details});
 }
 
@@ -298,7 +357,7 @@ class _$ClientErrorUnknown extends ClientErrorUnknown {
   String get message {
     if (_didmessage == false) {
       _didmessage = true;
-      _message = when(() => "알수 없음",
+      _message = when((msg, __) => msg,
           unknown: (_) => "기타 에러",
           cancelled: (_) => "요청 취소",
           tokenNotFound: (_) => "API 요청에 사용할 토큰이 없음",
@@ -333,7 +392,7 @@ class _$ClientErrorUnknown extends ClientErrorUnknown {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(), {
+    Result $default(String msg, String details), {
     @required Result unknown(String details),
     @required Result cancelled(String details),
     @required Result tokenNotFound(String details),
@@ -354,7 +413,7 @@ class _$ClientErrorUnknown extends ClientErrorUnknown {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(), {
+    Result $default(String msg, String details), {
     Result unknown(String details),
     Result cancelled(String details),
     Result tokenNotFound(String details),
@@ -415,14 +474,18 @@ abstract class ClientErrorUnknown extends ClientError {
   ClientErrorUnknown._() : super._();
   factory ClientErrorUnknown({String details}) = _$ClientErrorUnknown;
 
+  @override
   String get details;
+  @override
   $ClientErrorUnknownCopyWith<ClientErrorUnknown> get copyWith;
 }
 
-abstract class $ClientErrorCancelledCopyWith<$Res> {
+abstract class $ClientErrorCancelledCopyWith<$Res>
+    implements $ClientErrorCopyWith<$Res> {
   factory $ClientErrorCancelledCopyWith(ClientErrorCancelled value,
           $Res Function(ClientErrorCancelled) then) =
       _$ClientErrorCancelledCopyWithImpl<$Res>;
+  @override
   $Res call({String details});
 }
 
@@ -459,7 +522,7 @@ class _$ClientErrorCancelled extends ClientErrorCancelled {
   String get message {
     if (_didmessage == false) {
       _didmessage = true;
-      _message = when(() => "알수 없음",
+      _message = when((msg, __) => msg,
           unknown: (_) => "기타 에러",
           cancelled: (_) => "요청 취소",
           tokenNotFound: (_) => "API 요청에 사용할 토큰이 없음",
@@ -495,7 +558,7 @@ class _$ClientErrorCancelled extends ClientErrorCancelled {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(), {
+    Result $default(String msg, String details), {
     @required Result unknown(String details),
     @required Result cancelled(String details),
     @required Result tokenNotFound(String details),
@@ -516,7 +579,7 @@ class _$ClientErrorCancelled extends ClientErrorCancelled {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(), {
+    Result $default(String msg, String details), {
     Result unknown(String details),
     Result cancelled(String details),
     Result tokenNotFound(String details),
@@ -577,14 +640,18 @@ abstract class ClientErrorCancelled extends ClientError {
   ClientErrorCancelled._() : super._();
   factory ClientErrorCancelled({String details}) = _$ClientErrorCancelled;
 
+  @override
   String get details;
+  @override
   $ClientErrorCancelledCopyWith<ClientErrorCancelled> get copyWith;
 }
 
-abstract class $ClientErrorTokenNotFoundCopyWith<$Res> {
+abstract class $ClientErrorTokenNotFoundCopyWith<$Res>
+    implements $ClientErrorCopyWith<$Res> {
   factory $ClientErrorTokenNotFoundCopyWith(ClientErrorTokenNotFound value,
           $Res Function(ClientErrorTokenNotFound) then) =
       _$ClientErrorTokenNotFoundCopyWithImpl<$Res>;
+  @override
   $Res call({String details});
 }
 
@@ -622,7 +689,7 @@ class _$ClientErrorTokenNotFound extends ClientErrorTokenNotFound {
   String get message {
     if (_didmessage == false) {
       _didmessage = true;
-      _message = when(() => "알수 없음",
+      _message = when((msg, __) => msg,
           unknown: (_) => "기타 에러",
           cancelled: (_) => "요청 취소",
           tokenNotFound: (_) => "API 요청에 사용할 토큰이 없음",
@@ -658,7 +725,7 @@ class _$ClientErrorTokenNotFound extends ClientErrorTokenNotFound {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(), {
+    Result $default(String msg, String details), {
     @required Result unknown(String details),
     @required Result cancelled(String details),
     @required Result tokenNotFound(String details),
@@ -679,7 +746,7 @@ class _$ClientErrorTokenNotFound extends ClientErrorTokenNotFound {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(), {
+    Result $default(String msg, String details), {
     Result unknown(String details),
     Result cancelled(String details),
     Result tokenNotFound(String details),
@@ -741,14 +808,18 @@ abstract class ClientErrorTokenNotFound extends ClientError {
   factory ClientErrorTokenNotFound({String details}) =
       _$ClientErrorTokenNotFound;
 
+  @override
   String get details;
+  @override
   $ClientErrorTokenNotFoundCopyWith<ClientErrorTokenNotFound> get copyWith;
 }
 
-abstract class $ClientErrorNotSupportedCopyWith<$Res> {
+abstract class $ClientErrorNotSupportedCopyWith<$Res>
+    implements $ClientErrorCopyWith<$Res> {
   factory $ClientErrorNotSupportedCopyWith(ClientErrorNotSupported value,
           $Res Function(ClientErrorNotSupported) then) =
       _$ClientErrorNotSupportedCopyWithImpl<$Res>;
+  @override
   $Res call({String details});
 }
 
@@ -785,7 +856,7 @@ class _$ClientErrorNotSupported extends ClientErrorNotSupported {
   String get message {
     if (_didmessage == false) {
       _didmessage = true;
-      _message = when(() => "알수 없음",
+      _message = when((msg, __) => msg,
           unknown: (_) => "기타 에러",
           cancelled: (_) => "요청 취소",
           tokenNotFound: (_) => "API 요청에 사용할 토큰이 없음",
@@ -821,7 +892,7 @@ class _$ClientErrorNotSupported extends ClientErrorNotSupported {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(), {
+    Result $default(String msg, String details), {
     @required Result unknown(String details),
     @required Result cancelled(String details),
     @required Result tokenNotFound(String details),
@@ -842,7 +913,7 @@ class _$ClientErrorNotSupported extends ClientErrorNotSupported {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(), {
+    Result $default(String msg, String details), {
     Result unknown(String details),
     Result cancelled(String details),
     Result tokenNotFound(String details),
@@ -903,14 +974,18 @@ abstract class ClientErrorNotSupported extends ClientError {
   ClientErrorNotSupported._() : super._();
   factory ClientErrorNotSupported({String details}) = _$ClientErrorNotSupported;
 
+  @override
   String get details;
+  @override
   $ClientErrorNotSupportedCopyWith<ClientErrorNotSupported> get copyWith;
 }
 
-abstract class $ClientErrorBadParameterCopyWith<$Res> {
+abstract class $ClientErrorBadParameterCopyWith<$Res>
+    implements $ClientErrorCopyWith<$Res> {
   factory $ClientErrorBadParameterCopyWith(ClientErrorBadParameter value,
           $Res Function(ClientErrorBadParameter) then) =
       _$ClientErrorBadParameterCopyWithImpl<$Res>;
+  @override
   $Res call({String details});
 }
 
@@ -947,7 +1022,7 @@ class _$ClientErrorBadParameter extends ClientErrorBadParameter {
   String get message {
     if (_didmessage == false) {
       _didmessage = true;
-      _message = when(() => "알수 없음",
+      _message = when((msg, __) => msg,
           unknown: (_) => "기타 에러",
           cancelled: (_) => "요청 취소",
           tokenNotFound: (_) => "API 요청에 사용할 토큰이 없음",
@@ -983,7 +1058,7 @@ class _$ClientErrorBadParameter extends ClientErrorBadParameter {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(), {
+    Result $default(String msg, String details), {
     @required Result unknown(String details),
     @required Result cancelled(String details),
     @required Result tokenNotFound(String details),
@@ -1004,7 +1079,7 @@ class _$ClientErrorBadParameter extends ClientErrorBadParameter {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(), {
+    Result $default(String msg, String details), {
     Result unknown(String details),
     Result cancelled(String details),
     Result tokenNotFound(String details),
@@ -1065,14 +1140,18 @@ abstract class ClientErrorBadParameter extends ClientError {
   ClientErrorBadParameter._() : super._();
   factory ClientErrorBadParameter({String details}) = _$ClientErrorBadParameter;
 
+  @override
   String get details;
+  @override
   $ClientErrorBadParameterCopyWith<ClientErrorBadParameter> get copyWith;
 }
 
-abstract class $ClientErrorIllegalStateCopyWith<$Res> {
+abstract class $ClientErrorIllegalStateCopyWith<$Res>
+    implements $ClientErrorCopyWith<$Res> {
   factory $ClientErrorIllegalStateCopyWith(ClientErrorIllegalState value,
           $Res Function(ClientErrorIllegalState) then) =
       _$ClientErrorIllegalStateCopyWithImpl<$Res>;
+  @override
   $Res call({String details});
 }
 
@@ -1109,7 +1188,7 @@ class _$ClientErrorIllegalState extends ClientErrorIllegalState {
   String get message {
     if (_didmessage == false) {
       _didmessage = true;
-      _message = when(() => "알수 없음",
+      _message = when((msg, __) => msg,
           unknown: (_) => "기타 에러",
           cancelled: (_) => "요청 취소",
           tokenNotFound: (_) => "API 요청에 사용할 토큰이 없음",
@@ -1145,7 +1224,7 @@ class _$ClientErrorIllegalState extends ClientErrorIllegalState {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>(
-    Result $default(), {
+    Result $default(String msg, String details), {
     @required Result unknown(String details),
     @required Result cancelled(String details),
     @required Result tokenNotFound(String details),
@@ -1166,7 +1245,7 @@ class _$ClientErrorIllegalState extends ClientErrorIllegalState {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
-    Result $default(), {
+    Result $default(String msg, String details), {
     Result unknown(String details),
     Result cancelled(String details),
     Result tokenNotFound(String details),
@@ -1227,6 +1306,8 @@ abstract class ClientErrorIllegalState extends ClientError {
   ClientErrorIllegalState._() : super._();
   factory ClientErrorIllegalState({String details}) = _$ClientErrorIllegalState;
 
+  @override
   String get details;
+  @override
   $ClientErrorIllegalStateCopyWith<ClientErrorIllegalState> get copyWith;
 }
