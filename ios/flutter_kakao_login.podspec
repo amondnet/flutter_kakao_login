@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'flutter_kakao_login'
-  s.version          = '1.0.0'
+  s.version          = '2.0.0'
   s.summary          = 'A new flutter_kakao_login plugin project.'
   s.description      = 'A new flutter_kakao_login plugin project description'
   s.homepage         = 'https://github.com/JosephNK/flutter_kakao_login'
