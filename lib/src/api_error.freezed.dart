@@ -42,6 +42,13 @@ class _$ApiErrorTearOff {
   }
 
 // ignore: unused_element
+  ApiInvalidAccessToken invalidAccessToken({String details}) {
+    return ApiInvalidAccessToken(
+      details: details,
+    );
+  }
+
+// ignore: unused_element
   ApiErrorUnknown unknown({String details}) {
     return ApiErrorUnknown(
       details: details,
@@ -61,6 +68,7 @@ mixin _$ApiError {
     @required Result internalError(String details),
     @required Result illegalParams(String details),
     @required Result unsupportedApi(String details),
+    @required Result invalidAccessToken(String details),
     @required Result unknown(String details),
   });
   @optionalTypeArgs
@@ -69,6 +77,7 @@ mixin _$ApiError {
     Result internalError(String details),
     Result illegalParams(String details),
     Result unsupportedApi(String details),
+    Result invalidAccessToken(String details),
     Result unknown(String details),
     @required Result orElse(),
   });
@@ -78,6 +87,7 @@ mixin _$ApiError {
     @required Result internalError(ApiErrorInternalError value),
     @required Result illegalParams(ApiErrorIllegalParams value),
     @required Result unsupportedApi(ApiErrorUnsupportedApi value),
+    @required Result invalidAccessToken(ApiInvalidAccessToken value),
     @required Result unknown(ApiErrorUnknown value),
   });
   @optionalTypeArgs
@@ -86,6 +96,7 @@ mixin _$ApiError {
     Result internalError(ApiErrorInternalError value),
     Result illegalParams(ApiErrorIllegalParams value),
     Result unsupportedApi(ApiErrorUnsupportedApi value),
+    Result invalidAccessToken(ApiInvalidAccessToken value),
     Result unknown(ApiErrorUnknown value),
     @required Result orElse(),
   });
@@ -202,12 +213,14 @@ class _$_ApiError extends _ApiError {
     @required Result internalError(String details),
     @required Result illegalParams(String details),
     @required Result unsupportedApi(String details),
+    @required Result invalidAccessToken(String details),
     @required Result unknown(String details),
   }) {
     assert($default != null);
     assert(internalError != null);
     assert(illegalParams != null);
     assert(unsupportedApi != null);
+    assert(invalidAccessToken != null);
     assert(unknown != null);
     return $default(msg, details);
   }
@@ -219,6 +232,7 @@ class _$_ApiError extends _ApiError {
     Result internalError(String details),
     Result illegalParams(String details),
     Result unsupportedApi(String details),
+    Result invalidAccessToken(String details),
     Result unknown(String details),
     @required Result orElse(),
   }) {
@@ -236,12 +250,14 @@ class _$_ApiError extends _ApiError {
     @required Result internalError(ApiErrorInternalError value),
     @required Result illegalParams(ApiErrorIllegalParams value),
     @required Result unsupportedApi(ApiErrorUnsupportedApi value),
+    @required Result invalidAccessToken(ApiInvalidAccessToken value),
     @required Result unknown(ApiErrorUnknown value),
   }) {
     assert($default != null);
     assert(internalError != null);
     assert(illegalParams != null);
     assert(unsupportedApi != null);
+    assert(invalidAccessToken != null);
     assert(unknown != null);
     return $default(this);
   }
@@ -253,6 +269,7 @@ class _$_ApiError extends _ApiError {
     Result internalError(ApiErrorInternalError value),
     Result illegalParams(ApiErrorIllegalParams value),
     Result unsupportedApi(ApiErrorUnsupportedApi value),
+    Result invalidAccessToken(ApiInvalidAccessToken value),
     Result unknown(ApiErrorUnknown value),
     @required Result orElse(),
   }) {
@@ -355,12 +372,14 @@ class _$ApiErrorInternalError extends ApiErrorInternalError {
     @required Result internalError(String details),
     @required Result illegalParams(String details),
     @required Result unsupportedApi(String details),
+    @required Result invalidAccessToken(String details),
     @required Result unknown(String details),
   }) {
     assert($default != null);
     assert(internalError != null);
     assert(illegalParams != null);
     assert(unsupportedApi != null);
+    assert(invalidAccessToken != null);
     assert(unknown != null);
     return internalError(details);
   }
@@ -372,6 +391,7 @@ class _$ApiErrorInternalError extends ApiErrorInternalError {
     Result internalError(String details),
     Result illegalParams(String details),
     Result unsupportedApi(String details),
+    Result invalidAccessToken(String details),
     Result unknown(String details),
     @required Result orElse(),
   }) {
@@ -389,12 +409,14 @@ class _$ApiErrorInternalError extends ApiErrorInternalError {
     @required Result internalError(ApiErrorInternalError value),
     @required Result illegalParams(ApiErrorIllegalParams value),
     @required Result unsupportedApi(ApiErrorUnsupportedApi value),
+    @required Result invalidAccessToken(ApiInvalidAccessToken value),
     @required Result unknown(ApiErrorUnknown value),
   }) {
     assert($default != null);
     assert(internalError != null);
     assert(illegalParams != null);
     assert(unsupportedApi != null);
+    assert(invalidAccessToken != null);
     assert(unknown != null);
     return internalError(this);
   }
@@ -406,6 +428,7 @@ class _$ApiErrorInternalError extends ApiErrorInternalError {
     Result internalError(ApiErrorInternalError value),
     Result illegalParams(ApiErrorIllegalParams value),
     Result unsupportedApi(ApiErrorUnsupportedApi value),
+    Result invalidAccessToken(ApiInvalidAccessToken value),
     Result unknown(ApiErrorUnknown value),
     @required Result orElse(),
   }) {
@@ -507,12 +530,14 @@ class _$ApiErrorIllegalParams extends ApiErrorIllegalParams {
     @required Result internalError(String details),
     @required Result illegalParams(String details),
     @required Result unsupportedApi(String details),
+    @required Result invalidAccessToken(String details),
     @required Result unknown(String details),
   }) {
     assert($default != null);
     assert(internalError != null);
     assert(illegalParams != null);
     assert(unsupportedApi != null);
+    assert(invalidAccessToken != null);
     assert(unknown != null);
     return illegalParams(details);
   }
@@ -524,6 +549,7 @@ class _$ApiErrorIllegalParams extends ApiErrorIllegalParams {
     Result internalError(String details),
     Result illegalParams(String details),
     Result unsupportedApi(String details),
+    Result invalidAccessToken(String details),
     Result unknown(String details),
     @required Result orElse(),
   }) {
@@ -541,12 +567,14 @@ class _$ApiErrorIllegalParams extends ApiErrorIllegalParams {
     @required Result internalError(ApiErrorInternalError value),
     @required Result illegalParams(ApiErrorIllegalParams value),
     @required Result unsupportedApi(ApiErrorUnsupportedApi value),
+    @required Result invalidAccessToken(ApiInvalidAccessToken value),
     @required Result unknown(ApiErrorUnknown value),
   }) {
     assert($default != null);
     assert(internalError != null);
     assert(illegalParams != null);
     assert(unsupportedApi != null);
+    assert(invalidAccessToken != null);
     assert(unknown != null);
     return illegalParams(this);
   }
@@ -558,6 +586,7 @@ class _$ApiErrorIllegalParams extends ApiErrorIllegalParams {
     Result internalError(ApiErrorInternalError value),
     Result illegalParams(ApiErrorIllegalParams value),
     Result unsupportedApi(ApiErrorUnsupportedApi value),
+    Result invalidAccessToken(ApiInvalidAccessToken value),
     Result unknown(ApiErrorUnknown value),
     @required Result orElse(),
   }) {
@@ -659,12 +688,14 @@ class _$ApiErrorUnsupportedApi extends ApiErrorUnsupportedApi {
     @required Result internalError(String details),
     @required Result illegalParams(String details),
     @required Result unsupportedApi(String details),
+    @required Result invalidAccessToken(String details),
     @required Result unknown(String details),
   }) {
     assert($default != null);
     assert(internalError != null);
     assert(illegalParams != null);
     assert(unsupportedApi != null);
+    assert(invalidAccessToken != null);
     assert(unknown != null);
     return unsupportedApi(details);
   }
@@ -676,6 +707,7 @@ class _$ApiErrorUnsupportedApi extends ApiErrorUnsupportedApi {
     Result internalError(String details),
     Result illegalParams(String details),
     Result unsupportedApi(String details),
+    Result invalidAccessToken(String details),
     Result unknown(String details),
     @required Result orElse(),
   }) {
@@ -693,12 +725,14 @@ class _$ApiErrorUnsupportedApi extends ApiErrorUnsupportedApi {
     @required Result internalError(ApiErrorInternalError value),
     @required Result illegalParams(ApiErrorIllegalParams value),
     @required Result unsupportedApi(ApiErrorUnsupportedApi value),
+    @required Result invalidAccessToken(ApiInvalidAccessToken value),
     @required Result unknown(ApiErrorUnknown value),
   }) {
     assert($default != null);
     assert(internalError != null);
     assert(illegalParams != null);
     assert(unsupportedApi != null);
+    assert(invalidAccessToken != null);
     assert(unknown != null);
     return unsupportedApi(this);
   }
@@ -710,6 +744,7 @@ class _$ApiErrorUnsupportedApi extends ApiErrorUnsupportedApi {
     Result internalError(ApiErrorInternalError value),
     Result illegalParams(ApiErrorIllegalParams value),
     Result unsupportedApi(ApiErrorUnsupportedApi value),
+    Result invalidAccessToken(ApiInvalidAccessToken value),
     Result unknown(ApiErrorUnknown value),
     @required Result orElse(),
   }) {
@@ -729,6 +764,164 @@ abstract class ApiErrorUnsupportedApi extends ApiError {
   String get details;
   @override
   $ApiErrorUnsupportedApiCopyWith<ApiErrorUnsupportedApi> get copyWith;
+}
+
+abstract class $ApiInvalidAccessTokenCopyWith<$Res>
+    implements $ApiErrorCopyWith<$Res> {
+  factory $ApiInvalidAccessTokenCopyWith(ApiInvalidAccessToken value,
+          $Res Function(ApiInvalidAccessToken) then) =
+      _$ApiInvalidAccessTokenCopyWithImpl<$Res>;
+  @override
+  $Res call({String details});
+}
+
+class _$ApiInvalidAccessTokenCopyWithImpl<$Res>
+    extends _$ApiErrorCopyWithImpl<$Res>
+    implements $ApiInvalidAccessTokenCopyWith<$Res> {
+  _$ApiInvalidAccessTokenCopyWithImpl(
+      ApiInvalidAccessToken _value, $Res Function(ApiInvalidAccessToken) _then)
+      : super(_value, (v) => _then(v as ApiInvalidAccessToken));
+
+  @override
+  ApiInvalidAccessToken get _value => super._value as ApiInvalidAccessToken;
+
+  @override
+  $Res call({
+    Object details = freezed,
+  }) {
+    return _then(ApiInvalidAccessToken(
+      details: details == freezed ? _value.details : details as String,
+    ));
+  }
+}
+
+class _$ApiInvalidAccessToken extends ApiInvalidAccessToken {
+  _$ApiInvalidAccessToken({this.details}) : super._();
+
+  @override
+  final String details;
+
+  bool _didmessage = false;
+  String _message;
+
+  @override
+  String get message {
+    if (_didmessage == false) {
+      _didmessage = true;
+      _message = when((msg, details) => msg,
+          internalError: (_) => "기타 서버 에러",
+          illegalParams: (_) => "잘못된 파라미터",
+          unsupportedApi: (_) => "지원되지 않는 API",
+          unknown: (_) => "기타 에러");
+    }
+    return _message;
+  }
+
+  @override
+  String toString() {
+    return 'ApiError.invalidAccessToken(details: $details, message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is ApiInvalidAccessToken &&
+            (identical(other.details, details) ||
+                const DeepCollectionEquality().equals(other.details, details)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(details);
+
+  @override
+  $ApiInvalidAccessTokenCopyWith<ApiInvalidAccessToken> get copyWith =>
+      _$ApiInvalidAccessTokenCopyWithImpl<ApiInvalidAccessToken>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(String msg, String details), {
+    @required Result internalError(String details),
+    @required Result illegalParams(String details),
+    @required Result unsupportedApi(String details),
+    @required Result invalidAccessToken(String details),
+    @required Result unknown(String details),
+  }) {
+    assert($default != null);
+    assert(internalError != null);
+    assert(illegalParams != null);
+    assert(unsupportedApi != null);
+    assert(invalidAccessToken != null);
+    assert(unknown != null);
+    return invalidAccessToken(details);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(String msg, String details), {
+    Result internalError(String details),
+    Result illegalParams(String details),
+    Result unsupportedApi(String details),
+    Result invalidAccessToken(String details),
+    Result unknown(String details),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (invalidAccessToken != null) {
+      return invalidAccessToken(details);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(_ApiError value), {
+    @required Result internalError(ApiErrorInternalError value),
+    @required Result illegalParams(ApiErrorIllegalParams value),
+    @required Result unsupportedApi(ApiErrorUnsupportedApi value),
+    @required Result invalidAccessToken(ApiInvalidAccessToken value),
+    @required Result unknown(ApiErrorUnknown value),
+  }) {
+    assert($default != null);
+    assert(internalError != null);
+    assert(illegalParams != null);
+    assert(unsupportedApi != null);
+    assert(invalidAccessToken != null);
+    assert(unknown != null);
+    return invalidAccessToken(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(_ApiError value), {
+    Result internalError(ApiErrorInternalError value),
+    Result illegalParams(ApiErrorIllegalParams value),
+    Result unsupportedApi(ApiErrorUnsupportedApi value),
+    Result invalidAccessToken(ApiInvalidAccessToken value),
+    Result unknown(ApiErrorUnknown value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (invalidAccessToken != null) {
+      return invalidAccessToken(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ApiInvalidAccessToken extends ApiError {
+  ApiInvalidAccessToken._() : super._();
+  factory ApiInvalidAccessToken({String details}) = _$ApiInvalidAccessToken;
+
+  @override
+  String get details;
+  @override
+  $ApiInvalidAccessTokenCopyWith<ApiInvalidAccessToken> get copyWith;
 }
 
 abstract class $ApiErrorUnknownCopyWith<$Res>
@@ -809,12 +1002,14 @@ class _$ApiErrorUnknown extends ApiErrorUnknown {
     @required Result internalError(String details),
     @required Result illegalParams(String details),
     @required Result unsupportedApi(String details),
+    @required Result invalidAccessToken(String details),
     @required Result unknown(String details),
   }) {
     assert($default != null);
     assert(internalError != null);
     assert(illegalParams != null);
     assert(unsupportedApi != null);
+    assert(invalidAccessToken != null);
     assert(unknown != null);
     return unknown(details);
   }
@@ -826,6 +1021,7 @@ class _$ApiErrorUnknown extends ApiErrorUnknown {
     Result internalError(String details),
     Result illegalParams(String details),
     Result unsupportedApi(String details),
+    Result invalidAccessToken(String details),
     Result unknown(String details),
     @required Result orElse(),
   }) {
@@ -843,12 +1039,14 @@ class _$ApiErrorUnknown extends ApiErrorUnknown {
     @required Result internalError(ApiErrorInternalError value),
     @required Result illegalParams(ApiErrorIllegalParams value),
     @required Result unsupportedApi(ApiErrorUnsupportedApi value),
+    @required Result invalidAccessToken(ApiInvalidAccessToken value),
     @required Result unknown(ApiErrorUnknown value),
   }) {
     assert($default != null);
     assert(internalError != null);
     assert(illegalParams != null);
     assert(unsupportedApi != null);
+    assert(invalidAccessToken != null);
     assert(unknown != null);
     return unknown(this);
   }
@@ -860,6 +1058,7 @@ class _$ApiErrorUnknown extends ApiErrorUnknown {
     Result internalError(ApiErrorInternalError value),
     Result illegalParams(ApiErrorIllegalParams value),
     Result unsupportedApi(ApiErrorUnsupportedApi value),
+    Result invalidAccessToken(ApiInvalidAccessToken value),
     Result unknown(ApiErrorUnknown value),
     @required Result orElse(),
   }) {

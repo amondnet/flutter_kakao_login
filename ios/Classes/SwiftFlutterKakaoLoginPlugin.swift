@@ -48,9 +48,8 @@ public class SwiftFlutterKakaoLoginPlugin: FlutterPluginAppLifeCycleDelegate, Fl
                  AuthApi.shared.loginWithKakaoTalk {(oauthToken, error) in
                       if let error = error {
                           print(error)
-                          let errorMessage = error.localizedDescription
-                            
-                          result(FlutterError(code: "LOGIN_ERR", message: errorMessage, details: nil))
+                        self.handleError(error, result)
+                        
                       }
                       else {
                           print("loginWithKakaoTalk() success.")
@@ -61,8 +60,8 @@ public class SwiftFlutterKakaoLoginPlugin: FlutterPluginAppLifeCycleDelegate, Fl
                   AuthApi.shared.loginWithKakaoAccount {(oauthToken, error) in
                       if let error = error {
                           print(error)
-                          let errorMessage = error.localizedDescription
-                          result(FlutterError(code: "LOGIN_ERR", message: errorMessage, details: nil))
+                          self.handleError(error, result)
+
                       }
                       else {
                           print("loginWithKakaoAccount() success.")
@@ -75,8 +74,8 @@ public class SwiftFlutterKakaoLoginPlugin: FlutterPluginAppLifeCycleDelegate, Fl
       UserApi.shared.logout {(error) in
           if let error = error {
               print(error)
-              let errorMessage = error.localizedDescription
-              result(FlutterError(code: "LOGOUT_ERR", message: errorMessage, details: nil))
+              self.handleError(error, result)
+
           }
           else {
               print("logout() success.")
@@ -91,9 +90,8 @@ public class SwiftFlutterKakaoLoginPlugin: FlutterPluginAppLifeCycleDelegate, Fl
   private func getUserMe(result:  @escaping  FlutterResult) {
       UserApi.shared.me() {(user, error) in
           if let error = error {
-              print(error)
-            let errorMessage = error.localizedDescription
-              result(FlutterError(code: "USERME_ERR", message: errorMessage, details: nil))
+            print(error)
+            self.handleError(error, result)
           }
           else {
               print("me() success.")
@@ -182,8 +180,7 @@ public class SwiftFlutterKakaoLoginPlugin: FlutterPluginAppLifeCycleDelegate, Fl
       UserApi.shared.unlink {(error) in
           if let error = error {
               print(error)
-               let errorMessage = error.localizedDescription
-               result(FlutterError(code: "UNLINK_ERR", message: errorMessage, details: nil))
+               self.handleError(error, result)
           }
           else {
               print("unlink() success.")
@@ -210,6 +207,32 @@ public class SwiftFlutterKakaoLoginPlugin: FlutterPluginAppLifeCycleDelegate, Fl
         }
         return false
   }
+    private func handleError(_ error: Error,_ result: @escaping FlutterResult ) {
+        if ( error is SdkError ) {
+            debugPrint("sdkError")
+            switch( error as! SdkError) {
+                case .ClientFailed(reason: let reason, errorMessage: let errorMessage):
+                    debugPrint("ClientFailed \(reason)")
+                    result(FlutterError(code: "ClientError", message: "\(reason)", details: errorMessage))
+                    break
+                case .ApiFailed(reason: let reason, errorInfo: let errorInfo):
+                    debugPrint("ApiFailed \(reason)")
+                    result(FlutterError(code: "ApiError", message: "\(reason)", details: errorInfo?.msg))
+                    break
+                case .AuthFailed(reason: let reason, errorInfo: let errorInfo):
+                    debugPrint("AuthFailed \(reason)")
+                    result(FlutterError(code: "AuthError", message: "\(reason)", details: errorInfo?.errorDescription))
+                    break
+                case .GeneralFailed(error: let error):
+                    debugPrint("GeneralFailed")
+                    result(FlutterError(code: "GeneralError", message: error.localizedDescription, details: nil))
+                    break
+                }
+        } else {
+            debugPrint("unknown error")
+            result(FlutterError(code: "UnknownError", message: error.localizedDescription, details: nil))
+        }
+    }
 }
 
 extension Date {

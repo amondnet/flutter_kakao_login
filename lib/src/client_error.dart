@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_kakao_login/src/kakao_login_error.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -44,6 +45,7 @@ abstract class ClientError extends KakaoSdkError implements _$ClientError {
       llegalState: (_) => "정상적으로 실행할 수 없는 상태");
 
   static ClientError fromPlatformException(PlatformException e) {
+    debugPrint('ClientError.fromPlatformException ( ${e.message}');
     switch (e.message) {
       case "Cancelled":
         return ClientError.cancelled(details: e.details);

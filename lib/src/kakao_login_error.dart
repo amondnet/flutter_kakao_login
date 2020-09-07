@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_kakao_login/src/api_error.dart';
 import 'package:flutter_kakao_login/src/auth_error.dart';
@@ -12,6 +13,7 @@ abstract class KakaoSdkError extends Error {
   String get message;
 
   static KakaoSdkError fromPlatformException(PlatformException e) {
+    debugPrint("KakaoSdkError.fromPlatformException ( ${e.code}");
     switch (e.code) {
       case "ClientError":
         return ClientError.fromPlatformException(e);
