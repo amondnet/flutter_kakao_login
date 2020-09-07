@@ -4,5 +4,6 @@ targets:
       exclude:
         - test
         - example
+        - example/ios/.symlinks/
 
 

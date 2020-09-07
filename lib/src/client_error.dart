@@ -14,23 +14,27 @@ abstract class ClientError extends KakaoSdkError implements _$ClientError {
   factory ClientError(String msg, String details) = _ClientError;
 
   /// 기타 에러
-  factory ClientError.unknown({String details}) = ClientErrorUnknown;
+  factory ClientError.unknown({@nullable String details}) = ClientErrorUnknown;
 
   /// 요청 취소
-  factory ClientError.cancelled({String details}) = ClientErrorCancelled;
+  factory ClientError.cancelled({@nullable String details}) =
+      ClientErrorCancelled;
 
   /// API 요청에 사용할 토큰이 없음
-  factory ClientError.tokenNotFound({String details}) =
+  factory ClientError.tokenNotFound({@nullable String details}) =
       ClientErrorTokenNotFound;
 
   /// 지원되지 않는 기능
-  factory ClientError.notSupported({String details}) = ClientErrorNotSupported;
+  factory ClientError.notSupported({@nullable String details}) =
+      ClientErrorNotSupported;
 
   /// 잘못된 파라미터
-  factory ClientError.badParameter({String details}) = ClientErrorBadParameter;
+  factory ClientError.badParameter({@nullable String details}) =
+      ClientErrorBadParameter;
 
   /// 정상적으로 실행할 수 없는 상태
-  factory ClientError.llegalState({String details}) = ClientErrorIllegalState;
+  factory ClientError.illegalState({@nullable String details}) =
+      ClientErrorIllegalState;
 
   @override
   String get type => TYPE;
@@ -42,7 +46,7 @@ abstract class ClientError extends KakaoSdkError implements _$ClientError {
       tokenNotFound: (_) => "API 요청에 사용할 토큰이 없음",
       notSupported: (_) => "지원되지 않는 기능",
       badParameter: (_) => "잘못된 파라미터",
-      llegalState: (_) => "정상적으로 실행할 수 없는 상태");
+      illegalState: (_) => "정상적으로 실행할 수 없는 상태");
 
   static ClientError fromPlatformException(PlatformException e) {
     debugPrint('ClientError.fromPlatformException ( ${e.message}');
@@ -56,7 +60,7 @@ abstract class ClientError extends KakaoSdkError implements _$ClientError {
       case "BadParameter":
         return ClientError.badParameter(details: e.details);
       case "IlegalState":
-        return ClientError.llegalState(details: e.details);
+        return ClientError.illegalState(details: e.details);
       case "Unknown":
       default:
         return ClientError.unknown(details: e.details);

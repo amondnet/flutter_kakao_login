@@ -21,42 +21,42 @@ class _$ClientErrorTearOff {
   }
 
 // ignore: unused_element
-  ClientErrorUnknown unknown({String details}) {
+  ClientErrorUnknown unknown({@nullable String details}) {
     return ClientErrorUnknown(
       details: details,
     );
   }
 
 // ignore: unused_element
-  ClientErrorCancelled cancelled({String details}) {
+  ClientErrorCancelled cancelled({@nullable String details}) {
     return ClientErrorCancelled(
       details: details,
     );
   }
 
 // ignore: unused_element
-  ClientErrorTokenNotFound tokenNotFound({String details}) {
+  ClientErrorTokenNotFound tokenNotFound({@nullable String details}) {
     return ClientErrorTokenNotFound(
       details: details,
     );
   }
 
 // ignore: unused_element
-  ClientErrorNotSupported notSupported({String details}) {
+  ClientErrorNotSupported notSupported({@nullable String details}) {
     return ClientErrorNotSupported(
       details: details,
     );
   }
 
 // ignore: unused_element
-  ClientErrorBadParameter badParameter({String details}) {
+  ClientErrorBadParameter badParameter({@nullable String details}) {
     return ClientErrorBadParameter(
       details: details,
     );
   }
 
 // ignore: unused_element
-  ClientErrorIllegalState llegalState({String details}) {
+  ClientErrorIllegalState illegalState({@nullable String details}) {
     return ClientErrorIllegalState(
       details: details,
     );
@@ -72,22 +72,22 @@ mixin _$ClientError {
   @optionalTypeArgs
   Result when<Result extends Object>(
     Result $default(String msg, String details), {
-    @required Result unknown(String details),
-    @required Result cancelled(String details),
-    @required Result tokenNotFound(String details),
-    @required Result notSupported(String details),
-    @required Result badParameter(String details),
-    @required Result llegalState(String details),
+    @required Result unknown(@nullable String details),
+    @required Result cancelled(@nullable String details),
+    @required Result tokenNotFound(@nullable String details),
+    @required Result notSupported(@nullable String details),
+    @required Result badParameter(@nullable String details),
+    @required Result illegalState(@nullable String details),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
     Result $default(String msg, String details), {
-    Result unknown(String details),
-    Result cancelled(String details),
-    Result tokenNotFound(String details),
-    Result notSupported(String details),
-    Result badParameter(String details),
-    Result llegalState(String details),
+    Result unknown(@nullable String details),
+    Result cancelled(@nullable String details),
+    Result tokenNotFound(@nullable String details),
+    Result notSupported(@nullable String details),
+    Result badParameter(@nullable String details),
+    Result illegalState(@nullable String details),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -98,7 +98,7 @@ mixin _$ClientError {
     @required Result tokenNotFound(ClientErrorTokenNotFound value),
     @required Result notSupported(ClientErrorNotSupported value),
     @required Result badParameter(ClientErrorBadParameter value),
-    @required Result llegalState(ClientErrorIllegalState value),
+    @required Result illegalState(ClientErrorIllegalState value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>(
@@ -108,7 +108,7 @@ mixin _$ClientError {
     Result tokenNotFound(ClientErrorTokenNotFound value),
     Result notSupported(ClientErrorNotSupported value),
     Result badParameter(ClientErrorBadParameter value),
-    Result llegalState(ClientErrorIllegalState value),
+    Result illegalState(ClientErrorIllegalState value),
     @required Result orElse(),
   });
 
@@ -169,7 +169,7 @@ class __$ClientErrorCopyWithImpl<$Res> extends _$ClientErrorCopyWithImpl<$Res>
   }
 }
 
-class _$_ClientError extends _ClientError {
+class _$_ClientError extends _ClientError with DiagnosticableTreeMixin {
   _$_ClientError(this.msg, this.details)
       : assert(msg != null),
         assert(details != null),
@@ -193,14 +193,24 @@ class _$_ClientError extends _ClientError {
           tokenNotFound: (_) => "API 요청에 사용할 토큰이 없음",
           notSupported: (_) => "지원되지 않는 기능",
           badParameter: (_) => "잘못된 파라미터",
-          llegalState: (_) => "정상적으로 실행할 수 없는 상태");
+          illegalState: (_) => "정상적으로 실행할 수 없는 상태");
     }
     return _message;
   }
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ClientError(msg: $msg, details: $details, message: $message)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ClientError'))
+      ..add(DiagnosticsProperty('msg', msg))
+      ..add(DiagnosticsProperty('details', details))
+      ..add(DiagnosticsProperty('message', message));
   }
 
   @override
@@ -227,12 +237,12 @@ class _$_ClientError extends _ClientError {
   @optionalTypeArgs
   Result when<Result extends Object>(
     Result $default(String msg, String details), {
-    @required Result unknown(String details),
-    @required Result cancelled(String details),
-    @required Result tokenNotFound(String details),
-    @required Result notSupported(String details),
-    @required Result badParameter(String details),
-    @required Result llegalState(String details),
+    @required Result unknown(@nullable String details),
+    @required Result cancelled(@nullable String details),
+    @required Result tokenNotFound(@nullable String details),
+    @required Result notSupported(@nullable String details),
+    @required Result badParameter(@nullable String details),
+    @required Result illegalState(@nullable String details),
   }) {
     assert($default != null);
     assert(unknown != null);
@@ -240,7 +250,7 @@ class _$_ClientError extends _ClientError {
     assert(tokenNotFound != null);
     assert(notSupported != null);
     assert(badParameter != null);
-    assert(llegalState != null);
+    assert(illegalState != null);
     return $default(msg, details);
   }
 
@@ -248,12 +258,12 @@ class _$_ClientError extends _ClientError {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
     Result $default(String msg, String details), {
-    Result unknown(String details),
-    Result cancelled(String details),
-    Result tokenNotFound(String details),
-    Result notSupported(String details),
-    Result badParameter(String details),
-    Result llegalState(String details),
+    Result unknown(@nullable String details),
+    Result cancelled(@nullable String details),
+    Result tokenNotFound(@nullable String details),
+    Result notSupported(@nullable String details),
+    Result badParameter(@nullable String details),
+    Result illegalState(@nullable String details),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -272,7 +282,7 @@ class _$_ClientError extends _ClientError {
     @required Result tokenNotFound(ClientErrorTokenNotFound value),
     @required Result notSupported(ClientErrorNotSupported value),
     @required Result badParameter(ClientErrorBadParameter value),
-    @required Result llegalState(ClientErrorIllegalState value),
+    @required Result illegalState(ClientErrorIllegalState value),
   }) {
     assert($default != null);
     assert(unknown != null);
@@ -280,7 +290,7 @@ class _$_ClientError extends _ClientError {
     assert(tokenNotFound != null);
     assert(notSupported != null);
     assert(badParameter != null);
-    assert(llegalState != null);
+    assert(illegalState != null);
     return $default(this);
   }
 
@@ -293,7 +303,7 @@ class _$_ClientError extends _ClientError {
     Result tokenNotFound(ClientErrorTokenNotFound value),
     Result notSupported(ClientErrorNotSupported value),
     Result badParameter(ClientErrorBadParameter value),
-    Result llegalState(ClientErrorIllegalState value),
+    Result illegalState(ClientErrorIllegalState value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -321,7 +331,7 @@ abstract class $ClientErrorUnknownCopyWith<$Res>
           ClientErrorUnknown value, $Res Function(ClientErrorUnknown) then) =
       _$ClientErrorUnknownCopyWithImpl<$Res>;
   @override
-  $Res call({String details});
+  $Res call({@nullable String details});
 }
 
 class _$ClientErrorUnknownCopyWithImpl<$Res>
@@ -344,10 +354,12 @@ class _$ClientErrorUnknownCopyWithImpl<$Res>
   }
 }
 
-class _$ClientErrorUnknown extends ClientErrorUnknown {
-  _$ClientErrorUnknown({this.details}) : super._();
+class _$ClientErrorUnknown extends ClientErrorUnknown
+    with DiagnosticableTreeMixin {
+  _$ClientErrorUnknown({@nullable this.details}) : super._();
 
   @override
+  @nullable
   final String details;
 
   bool _didmessage = false;
@@ -363,14 +375,23 @@ class _$ClientErrorUnknown extends ClientErrorUnknown {
           tokenNotFound: (_) => "API 요청에 사용할 토큰이 없음",
           notSupported: (_) => "지원되지 않는 기능",
           badParameter: (_) => "잘못된 파라미터",
-          llegalState: (_) => "정상적으로 실행할 수 없는 상태");
+          illegalState: (_) => "정상적으로 실행할 수 없는 상태");
     }
     return _message;
   }
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ClientError.unknown(details: $details, message: $message)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ClientError.unknown'))
+      ..add(DiagnosticsProperty('details', details))
+      ..add(DiagnosticsProperty('message', message));
   }
 
   @override
@@ -393,12 +414,12 @@ class _$ClientErrorUnknown extends ClientErrorUnknown {
   @optionalTypeArgs
   Result when<Result extends Object>(
     Result $default(String msg, String details), {
-    @required Result unknown(String details),
-    @required Result cancelled(String details),
-    @required Result tokenNotFound(String details),
-    @required Result notSupported(String details),
-    @required Result badParameter(String details),
-    @required Result llegalState(String details),
+    @required Result unknown(@nullable String details),
+    @required Result cancelled(@nullable String details),
+    @required Result tokenNotFound(@nullable String details),
+    @required Result notSupported(@nullable String details),
+    @required Result badParameter(@nullable String details),
+    @required Result illegalState(@nullable String details),
   }) {
     assert($default != null);
     assert(unknown != null);
@@ -406,7 +427,7 @@ class _$ClientErrorUnknown extends ClientErrorUnknown {
     assert(tokenNotFound != null);
     assert(notSupported != null);
     assert(badParameter != null);
-    assert(llegalState != null);
+    assert(illegalState != null);
     return unknown(details);
   }
 
@@ -414,12 +435,12 @@ class _$ClientErrorUnknown extends ClientErrorUnknown {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
     Result $default(String msg, String details), {
-    Result unknown(String details),
-    Result cancelled(String details),
-    Result tokenNotFound(String details),
-    Result notSupported(String details),
-    Result badParameter(String details),
-    Result llegalState(String details),
+    Result unknown(@nullable String details),
+    Result cancelled(@nullable String details),
+    Result tokenNotFound(@nullable String details),
+    Result notSupported(@nullable String details),
+    Result badParameter(@nullable String details),
+    Result illegalState(@nullable String details),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -438,7 +459,7 @@ class _$ClientErrorUnknown extends ClientErrorUnknown {
     @required Result tokenNotFound(ClientErrorTokenNotFound value),
     @required Result notSupported(ClientErrorNotSupported value),
     @required Result badParameter(ClientErrorBadParameter value),
-    @required Result llegalState(ClientErrorIllegalState value),
+    @required Result illegalState(ClientErrorIllegalState value),
   }) {
     assert($default != null);
     assert(unknown != null);
@@ -446,7 +467,7 @@ class _$ClientErrorUnknown extends ClientErrorUnknown {
     assert(tokenNotFound != null);
     assert(notSupported != null);
     assert(badParameter != null);
-    assert(llegalState != null);
+    assert(illegalState != null);
     return unknown(this);
   }
 
@@ -459,7 +480,7 @@ class _$ClientErrorUnknown extends ClientErrorUnknown {
     Result tokenNotFound(ClientErrorTokenNotFound value),
     Result notSupported(ClientErrorNotSupported value),
     Result badParameter(ClientErrorBadParameter value),
-    Result llegalState(ClientErrorIllegalState value),
+    Result illegalState(ClientErrorIllegalState value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -472,9 +493,10 @@ class _$ClientErrorUnknown extends ClientErrorUnknown {
 
 abstract class ClientErrorUnknown extends ClientError {
   ClientErrorUnknown._() : super._();
-  factory ClientErrorUnknown({String details}) = _$ClientErrorUnknown;
+  factory ClientErrorUnknown({@nullable String details}) = _$ClientErrorUnknown;
 
   @override
+  @nullable
   String get details;
   @override
   $ClientErrorUnknownCopyWith<ClientErrorUnknown> get copyWith;
@@ -486,7 +508,7 @@ abstract class $ClientErrorCancelledCopyWith<$Res>
           $Res Function(ClientErrorCancelled) then) =
       _$ClientErrorCancelledCopyWithImpl<$Res>;
   @override
-  $Res call({String details});
+  $Res call({@nullable String details});
 }
 
 class _$ClientErrorCancelledCopyWithImpl<$Res>
@@ -509,10 +531,12 @@ class _$ClientErrorCancelledCopyWithImpl<$Res>
   }
 }
 
-class _$ClientErrorCancelled extends ClientErrorCancelled {
-  _$ClientErrorCancelled({this.details}) : super._();
+class _$ClientErrorCancelled extends ClientErrorCancelled
+    with DiagnosticableTreeMixin {
+  _$ClientErrorCancelled({@nullable this.details}) : super._();
 
   @override
+  @nullable
   final String details;
 
   bool _didmessage = false;
@@ -528,14 +552,23 @@ class _$ClientErrorCancelled extends ClientErrorCancelled {
           tokenNotFound: (_) => "API 요청에 사용할 토큰이 없음",
           notSupported: (_) => "지원되지 않는 기능",
           badParameter: (_) => "잘못된 파라미터",
-          llegalState: (_) => "정상적으로 실행할 수 없는 상태");
+          illegalState: (_) => "정상적으로 실행할 수 없는 상태");
     }
     return _message;
   }
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ClientError.cancelled(details: $details, message: $message)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ClientError.cancelled'))
+      ..add(DiagnosticsProperty('details', details))
+      ..add(DiagnosticsProperty('message', message));
   }
 
   @override
@@ -559,12 +592,12 @@ class _$ClientErrorCancelled extends ClientErrorCancelled {
   @optionalTypeArgs
   Result when<Result extends Object>(
     Result $default(String msg, String details), {
-    @required Result unknown(String details),
-    @required Result cancelled(String details),
-    @required Result tokenNotFound(String details),
-    @required Result notSupported(String details),
-    @required Result badParameter(String details),
-    @required Result llegalState(String details),
+    @required Result unknown(@nullable String details),
+    @required Result cancelled(@nullable String details),
+    @required Result tokenNotFound(@nullable String details),
+    @required Result notSupported(@nullable String details),
+    @required Result badParameter(@nullable String details),
+    @required Result illegalState(@nullable String details),
   }) {
     assert($default != null);
     assert(unknown != null);
@@ -572,7 +605,7 @@ class _$ClientErrorCancelled extends ClientErrorCancelled {
     assert(tokenNotFound != null);
     assert(notSupported != null);
     assert(badParameter != null);
-    assert(llegalState != null);
+    assert(illegalState != null);
     return cancelled(details);
   }
 
@@ -580,12 +613,12 @@ class _$ClientErrorCancelled extends ClientErrorCancelled {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
     Result $default(String msg, String details), {
-    Result unknown(String details),
-    Result cancelled(String details),
-    Result tokenNotFound(String details),
-    Result notSupported(String details),
-    Result badParameter(String details),
-    Result llegalState(String details),
+    Result unknown(@nullable String details),
+    Result cancelled(@nullable String details),
+    Result tokenNotFound(@nullable String details),
+    Result notSupported(@nullable String details),
+    Result badParameter(@nullable String details),
+    Result illegalState(@nullable String details),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -604,7 +637,7 @@ class _$ClientErrorCancelled extends ClientErrorCancelled {
     @required Result tokenNotFound(ClientErrorTokenNotFound value),
     @required Result notSupported(ClientErrorNotSupported value),
     @required Result badParameter(ClientErrorBadParameter value),
-    @required Result llegalState(ClientErrorIllegalState value),
+    @required Result illegalState(ClientErrorIllegalState value),
   }) {
     assert($default != null);
     assert(unknown != null);
@@ -612,7 +645,7 @@ class _$ClientErrorCancelled extends ClientErrorCancelled {
     assert(tokenNotFound != null);
     assert(notSupported != null);
     assert(badParameter != null);
-    assert(llegalState != null);
+    assert(illegalState != null);
     return cancelled(this);
   }
 
@@ -625,7 +658,7 @@ class _$ClientErrorCancelled extends ClientErrorCancelled {
     Result tokenNotFound(ClientErrorTokenNotFound value),
     Result notSupported(ClientErrorNotSupported value),
     Result badParameter(ClientErrorBadParameter value),
-    Result llegalState(ClientErrorIllegalState value),
+    Result illegalState(ClientErrorIllegalState value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -638,9 +671,11 @@ class _$ClientErrorCancelled extends ClientErrorCancelled {
 
 abstract class ClientErrorCancelled extends ClientError {
   ClientErrorCancelled._() : super._();
-  factory ClientErrorCancelled({String details}) = _$ClientErrorCancelled;
+  factory ClientErrorCancelled({@nullable String details}) =
+      _$ClientErrorCancelled;
 
   @override
+  @nullable
   String get details;
   @override
   $ClientErrorCancelledCopyWith<ClientErrorCancelled> get copyWith;
@@ -652,7 +687,7 @@ abstract class $ClientErrorTokenNotFoundCopyWith<$Res>
           $Res Function(ClientErrorTokenNotFound) then) =
       _$ClientErrorTokenNotFoundCopyWithImpl<$Res>;
   @override
-  $Res call({String details});
+  $Res call({@nullable String details});
 }
 
 class _$ClientErrorTokenNotFoundCopyWithImpl<$Res>
@@ -676,10 +711,12 @@ class _$ClientErrorTokenNotFoundCopyWithImpl<$Res>
   }
 }
 
-class _$ClientErrorTokenNotFound extends ClientErrorTokenNotFound {
-  _$ClientErrorTokenNotFound({this.details}) : super._();
+class _$ClientErrorTokenNotFound extends ClientErrorTokenNotFound
+    with DiagnosticableTreeMixin {
+  _$ClientErrorTokenNotFound({@nullable this.details}) : super._();
 
   @override
+  @nullable
   final String details;
 
   bool _didmessage = false;
@@ -695,14 +732,23 @@ class _$ClientErrorTokenNotFound extends ClientErrorTokenNotFound {
           tokenNotFound: (_) => "API 요청에 사용할 토큰이 없음",
           notSupported: (_) => "지원되지 않는 기능",
           badParameter: (_) => "잘못된 파라미터",
-          llegalState: (_) => "정상적으로 실행할 수 없는 상태");
+          illegalState: (_) => "정상적으로 실행할 수 없는 상태");
     }
     return _message;
   }
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ClientError.tokenNotFound(details: $details, message: $message)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ClientError.tokenNotFound'))
+      ..add(DiagnosticsProperty('details', details))
+      ..add(DiagnosticsProperty('message', message));
   }
 
   @override
@@ -726,12 +772,12 @@ class _$ClientErrorTokenNotFound extends ClientErrorTokenNotFound {
   @optionalTypeArgs
   Result when<Result extends Object>(
     Result $default(String msg, String details), {
-    @required Result unknown(String details),
-    @required Result cancelled(String details),
-    @required Result tokenNotFound(String details),
-    @required Result notSupported(String details),
-    @required Result badParameter(String details),
-    @required Result llegalState(String details),
+    @required Result unknown(@nullable String details),
+    @required Result cancelled(@nullable String details),
+    @required Result tokenNotFound(@nullable String details),
+    @required Result notSupported(@nullable String details),
+    @required Result badParameter(@nullable String details),
+    @required Result illegalState(@nullable String details),
   }) {
     assert($default != null);
     assert(unknown != null);
@@ -739,7 +785,7 @@ class _$ClientErrorTokenNotFound extends ClientErrorTokenNotFound {
     assert(tokenNotFound != null);
     assert(notSupported != null);
     assert(badParameter != null);
-    assert(llegalState != null);
+    assert(illegalState != null);
     return tokenNotFound(details);
   }
 
@@ -747,12 +793,12 @@ class _$ClientErrorTokenNotFound extends ClientErrorTokenNotFound {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
     Result $default(String msg, String details), {
-    Result unknown(String details),
-    Result cancelled(String details),
-    Result tokenNotFound(String details),
-    Result notSupported(String details),
-    Result badParameter(String details),
-    Result llegalState(String details),
+    Result unknown(@nullable String details),
+    Result cancelled(@nullable String details),
+    Result tokenNotFound(@nullable String details),
+    Result notSupported(@nullable String details),
+    Result badParameter(@nullable String details),
+    Result illegalState(@nullable String details),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -771,7 +817,7 @@ class _$ClientErrorTokenNotFound extends ClientErrorTokenNotFound {
     @required Result tokenNotFound(ClientErrorTokenNotFound value),
     @required Result notSupported(ClientErrorNotSupported value),
     @required Result badParameter(ClientErrorBadParameter value),
-    @required Result llegalState(ClientErrorIllegalState value),
+    @required Result illegalState(ClientErrorIllegalState value),
   }) {
     assert($default != null);
     assert(unknown != null);
@@ -779,7 +825,7 @@ class _$ClientErrorTokenNotFound extends ClientErrorTokenNotFound {
     assert(tokenNotFound != null);
     assert(notSupported != null);
     assert(badParameter != null);
-    assert(llegalState != null);
+    assert(illegalState != null);
     return tokenNotFound(this);
   }
 
@@ -792,7 +838,7 @@ class _$ClientErrorTokenNotFound extends ClientErrorTokenNotFound {
     Result tokenNotFound(ClientErrorTokenNotFound value),
     Result notSupported(ClientErrorNotSupported value),
     Result badParameter(ClientErrorBadParameter value),
-    Result llegalState(ClientErrorIllegalState value),
+    Result illegalState(ClientErrorIllegalState value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -805,10 +851,11 @@ class _$ClientErrorTokenNotFound extends ClientErrorTokenNotFound {
 
 abstract class ClientErrorTokenNotFound extends ClientError {
   ClientErrorTokenNotFound._() : super._();
-  factory ClientErrorTokenNotFound({String details}) =
+  factory ClientErrorTokenNotFound({@nullable String details}) =
       _$ClientErrorTokenNotFound;
 
   @override
+  @nullable
   String get details;
   @override
   $ClientErrorTokenNotFoundCopyWith<ClientErrorTokenNotFound> get copyWith;
@@ -820,7 +867,7 @@ abstract class $ClientErrorNotSupportedCopyWith<$Res>
           $Res Function(ClientErrorNotSupported) then) =
       _$ClientErrorNotSupportedCopyWithImpl<$Res>;
   @override
-  $Res call({String details});
+  $Res call({@nullable String details});
 }
 
 class _$ClientErrorNotSupportedCopyWithImpl<$Res>
@@ -843,10 +890,12 @@ class _$ClientErrorNotSupportedCopyWithImpl<$Res>
   }
 }
 
-class _$ClientErrorNotSupported extends ClientErrorNotSupported {
-  _$ClientErrorNotSupported({this.details}) : super._();
+class _$ClientErrorNotSupported extends ClientErrorNotSupported
+    with DiagnosticableTreeMixin {
+  _$ClientErrorNotSupported({@nullable this.details}) : super._();
 
   @override
+  @nullable
   final String details;
 
   bool _didmessage = false;
@@ -862,14 +911,23 @@ class _$ClientErrorNotSupported extends ClientErrorNotSupported {
           tokenNotFound: (_) => "API 요청에 사용할 토큰이 없음",
           notSupported: (_) => "지원되지 않는 기능",
           badParameter: (_) => "잘못된 파라미터",
-          llegalState: (_) => "정상적으로 실행할 수 없는 상태");
+          illegalState: (_) => "정상적으로 실행할 수 없는 상태");
     }
     return _message;
   }
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ClientError.notSupported(details: $details, message: $message)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ClientError.notSupported'))
+      ..add(DiagnosticsProperty('details', details))
+      ..add(DiagnosticsProperty('message', message));
   }
 
   @override
@@ -893,12 +951,12 @@ class _$ClientErrorNotSupported extends ClientErrorNotSupported {
   @optionalTypeArgs
   Result when<Result extends Object>(
     Result $default(String msg, String details), {
-    @required Result unknown(String details),
-    @required Result cancelled(String details),
-    @required Result tokenNotFound(String details),
-    @required Result notSupported(String details),
-    @required Result badParameter(String details),
-    @required Result llegalState(String details),
+    @required Result unknown(@nullable String details),
+    @required Result cancelled(@nullable String details),
+    @required Result tokenNotFound(@nullable String details),
+    @required Result notSupported(@nullable String details),
+    @required Result badParameter(@nullable String details),
+    @required Result illegalState(@nullable String details),
   }) {
     assert($default != null);
     assert(unknown != null);
@@ -906,7 +964,7 @@ class _$ClientErrorNotSupported extends ClientErrorNotSupported {
     assert(tokenNotFound != null);
     assert(notSupported != null);
     assert(badParameter != null);
-    assert(llegalState != null);
+    assert(illegalState != null);
     return notSupported(details);
   }
 
@@ -914,12 +972,12 @@ class _$ClientErrorNotSupported extends ClientErrorNotSupported {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
     Result $default(String msg, String details), {
-    Result unknown(String details),
-    Result cancelled(String details),
-    Result tokenNotFound(String details),
-    Result notSupported(String details),
-    Result badParameter(String details),
-    Result llegalState(String details),
+    Result unknown(@nullable String details),
+    Result cancelled(@nullable String details),
+    Result tokenNotFound(@nullable String details),
+    Result notSupported(@nullable String details),
+    Result badParameter(@nullable String details),
+    Result illegalState(@nullable String details),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -938,7 +996,7 @@ class _$ClientErrorNotSupported extends ClientErrorNotSupported {
     @required Result tokenNotFound(ClientErrorTokenNotFound value),
     @required Result notSupported(ClientErrorNotSupported value),
     @required Result badParameter(ClientErrorBadParameter value),
-    @required Result llegalState(ClientErrorIllegalState value),
+    @required Result illegalState(ClientErrorIllegalState value),
   }) {
     assert($default != null);
     assert(unknown != null);
@@ -946,7 +1004,7 @@ class _$ClientErrorNotSupported extends ClientErrorNotSupported {
     assert(tokenNotFound != null);
     assert(notSupported != null);
     assert(badParameter != null);
-    assert(llegalState != null);
+    assert(illegalState != null);
     return notSupported(this);
   }
 
@@ -959,7 +1017,7 @@ class _$ClientErrorNotSupported extends ClientErrorNotSupported {
     Result tokenNotFound(ClientErrorTokenNotFound value),
     Result notSupported(ClientErrorNotSupported value),
     Result badParameter(ClientErrorBadParameter value),
-    Result llegalState(ClientErrorIllegalState value),
+    Result illegalState(ClientErrorIllegalState value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -972,9 +1030,11 @@ class _$ClientErrorNotSupported extends ClientErrorNotSupported {
 
 abstract class ClientErrorNotSupported extends ClientError {
   ClientErrorNotSupported._() : super._();
-  factory ClientErrorNotSupported({String details}) = _$ClientErrorNotSupported;
+  factory ClientErrorNotSupported({@nullable String details}) =
+      _$ClientErrorNotSupported;
 
   @override
+  @nullable
   String get details;
   @override
   $ClientErrorNotSupportedCopyWith<ClientErrorNotSupported> get copyWith;
@@ -986,7 +1046,7 @@ abstract class $ClientErrorBadParameterCopyWith<$Res>
           $Res Function(ClientErrorBadParameter) then) =
       _$ClientErrorBadParameterCopyWithImpl<$Res>;
   @override
-  $Res call({String details});
+  $Res call({@nullable String details});
 }
 
 class _$ClientErrorBadParameterCopyWithImpl<$Res>
@@ -1009,10 +1069,12 @@ class _$ClientErrorBadParameterCopyWithImpl<$Res>
   }
 }
 
-class _$ClientErrorBadParameter extends ClientErrorBadParameter {
-  _$ClientErrorBadParameter({this.details}) : super._();
+class _$ClientErrorBadParameter extends ClientErrorBadParameter
+    with DiagnosticableTreeMixin {
+  _$ClientErrorBadParameter({@nullable this.details}) : super._();
 
   @override
+  @nullable
   final String details;
 
   bool _didmessage = false;
@@ -1028,14 +1090,23 @@ class _$ClientErrorBadParameter extends ClientErrorBadParameter {
           tokenNotFound: (_) => "API 요청에 사용할 토큰이 없음",
           notSupported: (_) => "지원되지 않는 기능",
           badParameter: (_) => "잘못된 파라미터",
-          llegalState: (_) => "정상적으로 실행할 수 없는 상태");
+          illegalState: (_) => "정상적으로 실행할 수 없는 상태");
     }
     return _message;
   }
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ClientError.badParameter(details: $details, message: $message)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ClientError.badParameter'))
+      ..add(DiagnosticsProperty('details', details))
+      ..add(DiagnosticsProperty('message', message));
   }
 
   @override
@@ -1059,12 +1130,12 @@ class _$ClientErrorBadParameter extends ClientErrorBadParameter {
   @optionalTypeArgs
   Result when<Result extends Object>(
     Result $default(String msg, String details), {
-    @required Result unknown(String details),
-    @required Result cancelled(String details),
-    @required Result tokenNotFound(String details),
-    @required Result notSupported(String details),
-    @required Result badParameter(String details),
-    @required Result llegalState(String details),
+    @required Result unknown(@nullable String details),
+    @required Result cancelled(@nullable String details),
+    @required Result tokenNotFound(@nullable String details),
+    @required Result notSupported(@nullable String details),
+    @required Result badParameter(@nullable String details),
+    @required Result illegalState(@nullable String details),
   }) {
     assert($default != null);
     assert(unknown != null);
@@ -1072,7 +1143,7 @@ class _$ClientErrorBadParameter extends ClientErrorBadParameter {
     assert(tokenNotFound != null);
     assert(notSupported != null);
     assert(badParameter != null);
-    assert(llegalState != null);
+    assert(illegalState != null);
     return badParameter(details);
   }
 
@@ -1080,12 +1151,12 @@ class _$ClientErrorBadParameter extends ClientErrorBadParameter {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
     Result $default(String msg, String details), {
-    Result unknown(String details),
-    Result cancelled(String details),
-    Result tokenNotFound(String details),
-    Result notSupported(String details),
-    Result badParameter(String details),
-    Result llegalState(String details),
+    Result unknown(@nullable String details),
+    Result cancelled(@nullable String details),
+    Result tokenNotFound(@nullable String details),
+    Result notSupported(@nullable String details),
+    Result badParameter(@nullable String details),
+    Result illegalState(@nullable String details),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1104,7 +1175,7 @@ class _$ClientErrorBadParameter extends ClientErrorBadParameter {
     @required Result tokenNotFound(ClientErrorTokenNotFound value),
     @required Result notSupported(ClientErrorNotSupported value),
     @required Result badParameter(ClientErrorBadParameter value),
-    @required Result llegalState(ClientErrorIllegalState value),
+    @required Result illegalState(ClientErrorIllegalState value),
   }) {
     assert($default != null);
     assert(unknown != null);
@@ -1112,7 +1183,7 @@ class _$ClientErrorBadParameter extends ClientErrorBadParameter {
     assert(tokenNotFound != null);
     assert(notSupported != null);
     assert(badParameter != null);
-    assert(llegalState != null);
+    assert(illegalState != null);
     return badParameter(this);
   }
 
@@ -1125,7 +1196,7 @@ class _$ClientErrorBadParameter extends ClientErrorBadParameter {
     Result tokenNotFound(ClientErrorTokenNotFound value),
     Result notSupported(ClientErrorNotSupported value),
     Result badParameter(ClientErrorBadParameter value),
-    Result llegalState(ClientErrorIllegalState value),
+    Result illegalState(ClientErrorIllegalState value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1138,9 +1209,11 @@ class _$ClientErrorBadParameter extends ClientErrorBadParameter {
 
 abstract class ClientErrorBadParameter extends ClientError {
   ClientErrorBadParameter._() : super._();
-  factory ClientErrorBadParameter({String details}) = _$ClientErrorBadParameter;
+  factory ClientErrorBadParameter({@nullable String details}) =
+      _$ClientErrorBadParameter;
 
   @override
+  @nullable
   String get details;
   @override
   $ClientErrorBadParameterCopyWith<ClientErrorBadParameter> get copyWith;
@@ -1152,7 +1225,7 @@ abstract class $ClientErrorIllegalStateCopyWith<$Res>
           $Res Function(ClientErrorIllegalState) then) =
       _$ClientErrorIllegalStateCopyWithImpl<$Res>;
   @override
-  $Res call({String details});
+  $Res call({@nullable String details});
 }
 
 class _$ClientErrorIllegalStateCopyWithImpl<$Res>
@@ -1175,10 +1248,12 @@ class _$ClientErrorIllegalStateCopyWithImpl<$Res>
   }
 }
 
-class _$ClientErrorIllegalState extends ClientErrorIllegalState {
-  _$ClientErrorIllegalState({this.details}) : super._();
+class _$ClientErrorIllegalState extends ClientErrorIllegalState
+    with DiagnosticableTreeMixin {
+  _$ClientErrorIllegalState({@nullable this.details}) : super._();
 
   @override
+  @nullable
   final String details;
 
   bool _didmessage = false;
@@ -1194,14 +1269,23 @@ class _$ClientErrorIllegalState extends ClientErrorIllegalState {
           tokenNotFound: (_) => "API 요청에 사용할 토큰이 없음",
           notSupported: (_) => "지원되지 않는 기능",
           badParameter: (_) => "잘못된 파라미터",
-          llegalState: (_) => "정상적으로 실행할 수 없는 상태");
+          illegalState: (_) => "정상적으로 실행할 수 없는 상태");
     }
     return _message;
   }
 
   @override
-  String toString() {
-    return 'ClientError.llegalState(details: $details, message: $message)';
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ClientError.illegalState(details: $details, message: $message)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ClientError.illegalState'))
+      ..add(DiagnosticsProperty('details', details))
+      ..add(DiagnosticsProperty('message', message));
   }
 
   @override
@@ -1225,12 +1309,12 @@ class _$ClientErrorIllegalState extends ClientErrorIllegalState {
   @optionalTypeArgs
   Result when<Result extends Object>(
     Result $default(String msg, String details), {
-    @required Result unknown(String details),
-    @required Result cancelled(String details),
-    @required Result tokenNotFound(String details),
-    @required Result notSupported(String details),
-    @required Result badParameter(String details),
-    @required Result llegalState(String details),
+    @required Result unknown(@nullable String details),
+    @required Result cancelled(@nullable String details),
+    @required Result tokenNotFound(@nullable String details),
+    @required Result notSupported(@nullable String details),
+    @required Result badParameter(@nullable String details),
+    @required Result illegalState(@nullable String details),
   }) {
     assert($default != null);
     assert(unknown != null);
@@ -1238,25 +1322,25 @@ class _$ClientErrorIllegalState extends ClientErrorIllegalState {
     assert(tokenNotFound != null);
     assert(notSupported != null);
     assert(badParameter != null);
-    assert(llegalState != null);
-    return llegalState(details);
+    assert(illegalState != null);
+    return illegalState(details);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
     Result $default(String msg, String details), {
-    Result unknown(String details),
-    Result cancelled(String details),
-    Result tokenNotFound(String details),
-    Result notSupported(String details),
-    Result badParameter(String details),
-    Result llegalState(String details),
+    Result unknown(@nullable String details),
+    Result cancelled(@nullable String details),
+    Result tokenNotFound(@nullable String details),
+    Result notSupported(@nullable String details),
+    Result badParameter(@nullable String details),
+    Result illegalState(@nullable String details),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (llegalState != null) {
-      return llegalState(details);
+    if (illegalState != null) {
+      return illegalState(details);
     }
     return orElse();
   }
@@ -1270,7 +1354,7 @@ class _$ClientErrorIllegalState extends ClientErrorIllegalState {
     @required Result tokenNotFound(ClientErrorTokenNotFound value),
     @required Result notSupported(ClientErrorNotSupported value),
     @required Result badParameter(ClientErrorBadParameter value),
-    @required Result llegalState(ClientErrorIllegalState value),
+    @required Result illegalState(ClientErrorIllegalState value),
   }) {
     assert($default != null);
     assert(unknown != null);
@@ -1278,8 +1362,8 @@ class _$ClientErrorIllegalState extends ClientErrorIllegalState {
     assert(tokenNotFound != null);
     assert(notSupported != null);
     assert(badParameter != null);
-    assert(llegalState != null);
-    return llegalState(this);
+    assert(illegalState != null);
+    return illegalState(this);
   }
 
   @override
@@ -1291,12 +1375,12 @@ class _$ClientErrorIllegalState extends ClientErrorIllegalState {
     Result tokenNotFound(ClientErrorTokenNotFound value),
     Result notSupported(ClientErrorNotSupported value),
     Result badParameter(ClientErrorBadParameter value),
-    Result llegalState(ClientErrorIllegalState value),
+    Result illegalState(ClientErrorIllegalState value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (llegalState != null) {
-      return llegalState(this);
+    if (illegalState != null) {
+      return illegalState(this);
     }
     return orElse();
   }
@@ -1304,9 +1388,11 @@ class _$ClientErrorIllegalState extends ClientErrorIllegalState {
 
 abstract class ClientErrorIllegalState extends ClientError {
   ClientErrorIllegalState._() : super._();
-  factory ClientErrorIllegalState({String details}) = _$ClientErrorIllegalState;
+  factory ClientErrorIllegalState({@nullable String details}) =
+      _$ClientErrorIllegalState;
 
   @override
+  @nullable
   String get details;
   @override
   $ClientErrorIllegalStateCopyWith<ClientErrorIllegalState> get copyWith;

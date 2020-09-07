@@ -21,63 +21,63 @@ class _$AuthErrorTearOff {
   }
 
 // ignore: unused_element
-  AuthErrorInvalidRequest invalidRequest({String details}) {
+  AuthErrorInvalidRequest invalidRequest({@nullable String details}) {
     return AuthErrorInvalidRequest(
       details: details,
     );
   }
 
 // ignore: unused_element
-  AuthErrorInvalidClient invalidClient({String details}) {
+  AuthErrorInvalidClient invalidClient({@nullable String details}) {
     return AuthErrorInvalidClient(
       details: details,
     );
   }
 
 // ignore: unused_element
-  AuthErrorInvalidScope invalidScope({String details}) {
+  AuthErrorInvalidScope invalidScope({@nullable String details}) {
     return AuthErrorInvalidScope(
       details: details,
     );
   }
 
 // ignore: unused_element
-  AuthErrorInvalidGrant invalidGrant({String details}) {
+  AuthErrorInvalidGrant invalidGrant({@nullable String details}) {
     return AuthErrorInvalidGrant(
       details: details,
     );
   }
 
 // ignore: unused_element
-  AuthErrorMisconfigured misconfigured({String details}) {
+  AuthErrorMisconfigured misconfigured({@nullable String details}) {
     return AuthErrorMisconfigured(
       details: details,
     );
   }
 
 // ignore: unused_element
-  AuthErrorUnauthorized unauthorized({String details}) {
+  AuthErrorUnauthorized unauthorized({@nullable String details}) {
     return AuthErrorUnauthorized(
       details: details,
     );
   }
 
 // ignore: unused_element
-  AuthErrorAccessDenied accessDenied({String details}) {
+  AuthErrorAccessDenied accessDenied({@nullable String details}) {
     return AuthErrorAccessDenied(
       details: details,
     );
   }
 
 // ignore: unused_element
-  AuthErrorServerError serverError({String details}) {
+  AuthErrorServerError serverError({@nullable String details}) {
     return AuthErrorServerError(
       details: details,
     );
   }
 
 // ignore: unused_element
-  AuthErrorUnknown unknown({String details}) {
+  AuthErrorUnknown unknown({@nullable String details}) {
     return AuthErrorUnknown(
       details: details,
     );
@@ -93,28 +93,28 @@ mixin _$AuthError {
   @optionalTypeArgs
   Result when<Result extends Object>(
     Result $default(String msg, String details), {
-    @required Result invalidRequest(String details),
-    @required Result invalidClient(String details),
-    @required Result invalidScope(String details),
-    @required Result invalidGrant(String details),
-    @required Result misconfigured(String details),
-    @required Result unauthorized(String details),
-    @required Result accessDenied(String details),
-    @required Result serverError(String details),
-    @required Result unknown(String details),
+    @required Result invalidRequest(@nullable String details),
+    @required Result invalidClient(@nullable String details),
+    @required Result invalidScope(@nullable String details),
+    @required Result invalidGrant(@nullable String details),
+    @required Result misconfigured(@nullable String details),
+    @required Result unauthorized(@nullable String details),
+    @required Result accessDenied(@nullable String details),
+    @required Result serverError(@nullable String details),
+    @required Result unknown(@nullable String details),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
     Result $default(String msg, String details), {
-    Result invalidRequest(String details),
-    Result invalidClient(String details),
-    Result invalidScope(String details),
-    Result invalidGrant(String details),
-    Result misconfigured(String details),
-    Result unauthorized(String details),
-    Result accessDenied(String details),
-    Result serverError(String details),
-    Result unknown(String details),
+    Result invalidRequest(@nullable String details),
+    Result invalidClient(@nullable String details),
+    Result invalidScope(@nullable String details),
+    Result invalidGrant(@nullable String details),
+    Result misconfigured(@nullable String details),
+    Result unauthorized(@nullable String details),
+    Result accessDenied(@nullable String details),
+    Result serverError(@nullable String details),
+    Result unknown(@nullable String details),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -260,15 +260,15 @@ class _$_AuthError extends _AuthError {
   @optionalTypeArgs
   Result when<Result extends Object>(
     Result $default(String msg, String details), {
-    @required Result invalidRequest(String details),
-    @required Result invalidClient(String details),
-    @required Result invalidScope(String details),
-    @required Result invalidGrant(String details),
-    @required Result misconfigured(String details),
-    @required Result unauthorized(String details),
-    @required Result accessDenied(String details),
-    @required Result serverError(String details),
-    @required Result unknown(String details),
+    @required Result invalidRequest(@nullable String details),
+    @required Result invalidClient(@nullable String details),
+    @required Result invalidScope(@nullable String details),
+    @required Result invalidGrant(@nullable String details),
+    @required Result misconfigured(@nullable String details),
+    @required Result unauthorized(@nullable String details),
+    @required Result accessDenied(@nullable String details),
+    @required Result serverError(@nullable String details),
+    @required Result unknown(@nullable String details),
   }) {
     assert($default != null);
     assert(invalidRequest != null);
@@ -287,15 +287,15 @@ class _$_AuthError extends _AuthError {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
     Result $default(String msg, String details), {
-    Result invalidRequest(String details),
-    Result invalidClient(String details),
-    Result invalidScope(String details),
-    Result invalidGrant(String details),
-    Result misconfigured(String details),
-    Result unauthorized(String details),
-    Result accessDenied(String details),
-    Result serverError(String details),
-    Result unknown(String details),
+    Result invalidRequest(@nullable String details),
+    Result invalidClient(@nullable String details),
+    Result invalidScope(@nullable String details),
+    Result invalidGrant(@nullable String details),
+    Result misconfigured(@nullable String details),
+    Result unauthorized(@nullable String details),
+    Result accessDenied(@nullable String details),
+    Result serverError(@nullable String details),
+    Result unknown(@nullable String details),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -372,7 +372,7 @@ abstract class $AuthErrorInvalidRequestCopyWith<$Res>
           $Res Function(AuthErrorInvalidRequest) then) =
       _$AuthErrorInvalidRequestCopyWithImpl<$Res>;
   @override
-  $Res call({String details});
+  $Res call({@nullable String details});
 }
 
 class _$AuthErrorInvalidRequestCopyWithImpl<$Res>
@@ -396,9 +396,10 @@ class _$AuthErrorInvalidRequestCopyWithImpl<$Res>
 }
 
 class _$AuthErrorInvalidRequest extends AuthErrorInvalidRequest {
-  _$AuthErrorInvalidRequest({this.details}) : super._();
+  _$AuthErrorInvalidRequest({@nullable this.details}) : super._();
 
   @override
+  @nullable
   final String details;
 
   bool _didmessage = false;
@@ -448,15 +449,15 @@ class _$AuthErrorInvalidRequest extends AuthErrorInvalidRequest {
   @optionalTypeArgs
   Result when<Result extends Object>(
     Result $default(String msg, String details), {
-    @required Result invalidRequest(String details),
-    @required Result invalidClient(String details),
-    @required Result invalidScope(String details),
-    @required Result invalidGrant(String details),
-    @required Result misconfigured(String details),
-    @required Result unauthorized(String details),
-    @required Result accessDenied(String details),
-    @required Result serverError(String details),
-    @required Result unknown(String details),
+    @required Result invalidRequest(@nullable String details),
+    @required Result invalidClient(@nullable String details),
+    @required Result invalidScope(@nullable String details),
+    @required Result invalidGrant(@nullable String details),
+    @required Result misconfigured(@nullable String details),
+    @required Result unauthorized(@nullable String details),
+    @required Result accessDenied(@nullable String details),
+    @required Result serverError(@nullable String details),
+    @required Result unknown(@nullable String details),
   }) {
     assert($default != null);
     assert(invalidRequest != null);
@@ -475,15 +476,15 @@ class _$AuthErrorInvalidRequest extends AuthErrorInvalidRequest {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
     Result $default(String msg, String details), {
-    Result invalidRequest(String details),
-    Result invalidClient(String details),
-    Result invalidScope(String details),
-    Result invalidGrant(String details),
-    Result misconfigured(String details),
-    Result unauthorized(String details),
-    Result accessDenied(String details),
-    Result serverError(String details),
-    Result unknown(String details),
+    Result invalidRequest(@nullable String details),
+    Result invalidClient(@nullable String details),
+    Result invalidScope(@nullable String details),
+    Result invalidGrant(@nullable String details),
+    Result misconfigured(@nullable String details),
+    Result unauthorized(@nullable String details),
+    Result accessDenied(@nullable String details),
+    Result serverError(@nullable String details),
+    Result unknown(@nullable String details),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -545,9 +546,11 @@ class _$AuthErrorInvalidRequest extends AuthErrorInvalidRequest {
 
 abstract class AuthErrorInvalidRequest extends AuthError {
   AuthErrorInvalidRequest._() : super._();
-  factory AuthErrorInvalidRequest({String details}) = _$AuthErrorInvalidRequest;
+  factory AuthErrorInvalidRequest({@nullable String details}) =
+      _$AuthErrorInvalidRequest;
 
   @override
+  @nullable
   String get details;
   @override
   $AuthErrorInvalidRequestCopyWith<AuthErrorInvalidRequest> get copyWith;
@@ -559,7 +562,7 @@ abstract class $AuthErrorInvalidClientCopyWith<$Res>
           $Res Function(AuthErrorInvalidClient) then) =
       _$AuthErrorInvalidClientCopyWithImpl<$Res>;
   @override
-  $Res call({String details});
+  $Res call({@nullable String details});
 }
 
 class _$AuthErrorInvalidClientCopyWithImpl<$Res>
@@ -583,9 +586,10 @@ class _$AuthErrorInvalidClientCopyWithImpl<$Res>
 }
 
 class _$AuthErrorInvalidClient extends AuthErrorInvalidClient {
-  _$AuthErrorInvalidClient({this.details}) : super._();
+  _$AuthErrorInvalidClient({@nullable this.details}) : super._();
 
   @override
+  @nullable
   final String details;
 
   bool _didmessage = false;
@@ -635,15 +639,15 @@ class _$AuthErrorInvalidClient extends AuthErrorInvalidClient {
   @optionalTypeArgs
   Result when<Result extends Object>(
     Result $default(String msg, String details), {
-    @required Result invalidRequest(String details),
-    @required Result invalidClient(String details),
-    @required Result invalidScope(String details),
-    @required Result invalidGrant(String details),
-    @required Result misconfigured(String details),
-    @required Result unauthorized(String details),
-    @required Result accessDenied(String details),
-    @required Result serverError(String details),
-    @required Result unknown(String details),
+    @required Result invalidRequest(@nullable String details),
+    @required Result invalidClient(@nullable String details),
+    @required Result invalidScope(@nullable String details),
+    @required Result invalidGrant(@nullable String details),
+    @required Result misconfigured(@nullable String details),
+    @required Result unauthorized(@nullable String details),
+    @required Result accessDenied(@nullable String details),
+    @required Result serverError(@nullable String details),
+    @required Result unknown(@nullable String details),
   }) {
     assert($default != null);
     assert(invalidRequest != null);
@@ -662,15 +666,15 @@ class _$AuthErrorInvalidClient extends AuthErrorInvalidClient {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
     Result $default(String msg, String details), {
-    Result invalidRequest(String details),
-    Result invalidClient(String details),
-    Result invalidScope(String details),
-    Result invalidGrant(String details),
-    Result misconfigured(String details),
-    Result unauthorized(String details),
-    Result accessDenied(String details),
-    Result serverError(String details),
-    Result unknown(String details),
+    Result invalidRequest(@nullable String details),
+    Result invalidClient(@nullable String details),
+    Result invalidScope(@nullable String details),
+    Result invalidGrant(@nullable String details),
+    Result misconfigured(@nullable String details),
+    Result unauthorized(@nullable String details),
+    Result accessDenied(@nullable String details),
+    Result serverError(@nullable String details),
+    Result unknown(@nullable String details),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -732,9 +736,11 @@ class _$AuthErrorInvalidClient extends AuthErrorInvalidClient {
 
 abstract class AuthErrorInvalidClient extends AuthError {
   AuthErrorInvalidClient._() : super._();
-  factory AuthErrorInvalidClient({String details}) = _$AuthErrorInvalidClient;
+  factory AuthErrorInvalidClient({@nullable String details}) =
+      _$AuthErrorInvalidClient;
 
   @override
+  @nullable
   String get details;
   @override
   $AuthErrorInvalidClientCopyWith<AuthErrorInvalidClient> get copyWith;
@@ -746,7 +752,7 @@ abstract class $AuthErrorInvalidScopeCopyWith<$Res>
           $Res Function(AuthErrorInvalidScope) then) =
       _$AuthErrorInvalidScopeCopyWithImpl<$Res>;
   @override
-  $Res call({String details});
+  $Res call({@nullable String details});
 }
 
 class _$AuthErrorInvalidScopeCopyWithImpl<$Res>
@@ -770,9 +776,10 @@ class _$AuthErrorInvalidScopeCopyWithImpl<$Res>
 }
 
 class _$AuthErrorInvalidScope extends AuthErrorInvalidScope {
-  _$AuthErrorInvalidScope({this.details}) : super._();
+  _$AuthErrorInvalidScope({@nullable this.details}) : super._();
 
   @override
+  @nullable
   final String details;
 
   bool _didmessage = false;
@@ -822,15 +829,15 @@ class _$AuthErrorInvalidScope extends AuthErrorInvalidScope {
   @optionalTypeArgs
   Result when<Result extends Object>(
     Result $default(String msg, String details), {
-    @required Result invalidRequest(String details),
-    @required Result invalidClient(String details),
-    @required Result invalidScope(String details),
-    @required Result invalidGrant(String details),
-    @required Result misconfigured(String details),
-    @required Result unauthorized(String details),
-    @required Result accessDenied(String details),
-    @required Result serverError(String details),
-    @required Result unknown(String details),
+    @required Result invalidRequest(@nullable String details),
+    @required Result invalidClient(@nullable String details),
+    @required Result invalidScope(@nullable String details),
+    @required Result invalidGrant(@nullable String details),
+    @required Result misconfigured(@nullable String details),
+    @required Result unauthorized(@nullable String details),
+    @required Result accessDenied(@nullable String details),
+    @required Result serverError(@nullable String details),
+    @required Result unknown(@nullable String details),
   }) {
     assert($default != null);
     assert(invalidRequest != null);
@@ -849,15 +856,15 @@ class _$AuthErrorInvalidScope extends AuthErrorInvalidScope {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
     Result $default(String msg, String details), {
-    Result invalidRequest(String details),
-    Result invalidClient(String details),
-    Result invalidScope(String details),
-    Result invalidGrant(String details),
-    Result misconfigured(String details),
-    Result unauthorized(String details),
-    Result accessDenied(String details),
-    Result serverError(String details),
-    Result unknown(String details),
+    Result invalidRequest(@nullable String details),
+    Result invalidClient(@nullable String details),
+    Result invalidScope(@nullable String details),
+    Result invalidGrant(@nullable String details),
+    Result misconfigured(@nullable String details),
+    Result unauthorized(@nullable String details),
+    Result accessDenied(@nullable String details),
+    Result serverError(@nullable String details),
+    Result unknown(@nullable String details),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -919,9 +926,11 @@ class _$AuthErrorInvalidScope extends AuthErrorInvalidScope {
 
 abstract class AuthErrorInvalidScope extends AuthError {
   AuthErrorInvalidScope._() : super._();
-  factory AuthErrorInvalidScope({String details}) = _$AuthErrorInvalidScope;
+  factory AuthErrorInvalidScope({@nullable String details}) =
+      _$AuthErrorInvalidScope;
 
   @override
+  @nullable
   String get details;
   @override
   $AuthErrorInvalidScopeCopyWith<AuthErrorInvalidScope> get copyWith;
@@ -933,7 +942,7 @@ abstract class $AuthErrorInvalidGrantCopyWith<$Res>
           $Res Function(AuthErrorInvalidGrant) then) =
       _$AuthErrorInvalidGrantCopyWithImpl<$Res>;
   @override
-  $Res call({String details});
+  $Res call({@nullable String details});
 }
 
 class _$AuthErrorInvalidGrantCopyWithImpl<$Res>
@@ -957,9 +966,10 @@ class _$AuthErrorInvalidGrantCopyWithImpl<$Res>
 }
 
 class _$AuthErrorInvalidGrant extends AuthErrorInvalidGrant {
-  _$AuthErrorInvalidGrant({this.details}) : super._();
+  _$AuthErrorInvalidGrant({@nullable this.details}) : super._();
 
   @override
+  @nullable
   final String details;
 
   bool _didmessage = false;
@@ -1009,15 +1019,15 @@ class _$AuthErrorInvalidGrant extends AuthErrorInvalidGrant {
   @optionalTypeArgs
   Result when<Result extends Object>(
     Result $default(String msg, String details), {
-    @required Result invalidRequest(String details),
-    @required Result invalidClient(String details),
-    @required Result invalidScope(String details),
-    @required Result invalidGrant(String details),
-    @required Result misconfigured(String details),
-    @required Result unauthorized(String details),
-    @required Result accessDenied(String details),
-    @required Result serverError(String details),
-    @required Result unknown(String details),
+    @required Result invalidRequest(@nullable String details),
+    @required Result invalidClient(@nullable String details),
+    @required Result invalidScope(@nullable String details),
+    @required Result invalidGrant(@nullable String details),
+    @required Result misconfigured(@nullable String details),
+    @required Result unauthorized(@nullable String details),
+    @required Result accessDenied(@nullable String details),
+    @required Result serverError(@nullable String details),
+    @required Result unknown(@nullable String details),
   }) {
     assert($default != null);
     assert(invalidRequest != null);
@@ -1036,15 +1046,15 @@ class _$AuthErrorInvalidGrant extends AuthErrorInvalidGrant {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
     Result $default(String msg, String details), {
-    Result invalidRequest(String details),
-    Result invalidClient(String details),
-    Result invalidScope(String details),
-    Result invalidGrant(String details),
-    Result misconfigured(String details),
-    Result unauthorized(String details),
-    Result accessDenied(String details),
-    Result serverError(String details),
-    Result unknown(String details),
+    Result invalidRequest(@nullable String details),
+    Result invalidClient(@nullable String details),
+    Result invalidScope(@nullable String details),
+    Result invalidGrant(@nullable String details),
+    Result misconfigured(@nullable String details),
+    Result unauthorized(@nullable String details),
+    Result accessDenied(@nullable String details),
+    Result serverError(@nullable String details),
+    Result unknown(@nullable String details),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1106,9 +1116,11 @@ class _$AuthErrorInvalidGrant extends AuthErrorInvalidGrant {
 
 abstract class AuthErrorInvalidGrant extends AuthError {
   AuthErrorInvalidGrant._() : super._();
-  factory AuthErrorInvalidGrant({String details}) = _$AuthErrorInvalidGrant;
+  factory AuthErrorInvalidGrant({@nullable String details}) =
+      _$AuthErrorInvalidGrant;
 
   @override
+  @nullable
   String get details;
   @override
   $AuthErrorInvalidGrantCopyWith<AuthErrorInvalidGrant> get copyWith;
@@ -1120,7 +1132,7 @@ abstract class $AuthErrorMisconfiguredCopyWith<$Res>
           $Res Function(AuthErrorMisconfigured) then) =
       _$AuthErrorMisconfiguredCopyWithImpl<$Res>;
   @override
-  $Res call({String details});
+  $Res call({@nullable String details});
 }
 
 class _$AuthErrorMisconfiguredCopyWithImpl<$Res>
@@ -1144,9 +1156,10 @@ class _$AuthErrorMisconfiguredCopyWithImpl<$Res>
 }
 
 class _$AuthErrorMisconfigured extends AuthErrorMisconfigured {
-  _$AuthErrorMisconfigured({this.details}) : super._();
+  _$AuthErrorMisconfigured({@nullable this.details}) : super._();
 
   @override
+  @nullable
   final String details;
 
   bool _didmessage = false;
@@ -1196,15 +1209,15 @@ class _$AuthErrorMisconfigured extends AuthErrorMisconfigured {
   @optionalTypeArgs
   Result when<Result extends Object>(
     Result $default(String msg, String details), {
-    @required Result invalidRequest(String details),
-    @required Result invalidClient(String details),
-    @required Result invalidScope(String details),
-    @required Result invalidGrant(String details),
-    @required Result misconfigured(String details),
-    @required Result unauthorized(String details),
-    @required Result accessDenied(String details),
-    @required Result serverError(String details),
-    @required Result unknown(String details),
+    @required Result invalidRequest(@nullable String details),
+    @required Result invalidClient(@nullable String details),
+    @required Result invalidScope(@nullable String details),
+    @required Result invalidGrant(@nullable String details),
+    @required Result misconfigured(@nullable String details),
+    @required Result unauthorized(@nullable String details),
+    @required Result accessDenied(@nullable String details),
+    @required Result serverError(@nullable String details),
+    @required Result unknown(@nullable String details),
   }) {
     assert($default != null);
     assert(invalidRequest != null);
@@ -1223,15 +1236,15 @@ class _$AuthErrorMisconfigured extends AuthErrorMisconfigured {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
     Result $default(String msg, String details), {
-    Result invalidRequest(String details),
-    Result invalidClient(String details),
-    Result invalidScope(String details),
-    Result invalidGrant(String details),
-    Result misconfigured(String details),
-    Result unauthorized(String details),
-    Result accessDenied(String details),
-    Result serverError(String details),
-    Result unknown(String details),
+    Result invalidRequest(@nullable String details),
+    Result invalidClient(@nullable String details),
+    Result invalidScope(@nullable String details),
+    Result invalidGrant(@nullable String details),
+    Result misconfigured(@nullable String details),
+    Result unauthorized(@nullable String details),
+    Result accessDenied(@nullable String details),
+    Result serverError(@nullable String details),
+    Result unknown(@nullable String details),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1293,9 +1306,11 @@ class _$AuthErrorMisconfigured extends AuthErrorMisconfigured {
 
 abstract class AuthErrorMisconfigured extends AuthError {
   AuthErrorMisconfigured._() : super._();
-  factory AuthErrorMisconfigured({String details}) = _$AuthErrorMisconfigured;
+  factory AuthErrorMisconfigured({@nullable String details}) =
+      _$AuthErrorMisconfigured;
 
   @override
+  @nullable
   String get details;
   @override
   $AuthErrorMisconfiguredCopyWith<AuthErrorMisconfigured> get copyWith;
@@ -1307,7 +1322,7 @@ abstract class $AuthErrorUnauthorizedCopyWith<$Res>
           $Res Function(AuthErrorUnauthorized) then) =
       _$AuthErrorUnauthorizedCopyWithImpl<$Res>;
   @override
-  $Res call({String details});
+  $Res call({@nullable String details});
 }
 
 class _$AuthErrorUnauthorizedCopyWithImpl<$Res>
@@ -1331,9 +1346,10 @@ class _$AuthErrorUnauthorizedCopyWithImpl<$Res>
 }
 
 class _$AuthErrorUnauthorized extends AuthErrorUnauthorized {
-  _$AuthErrorUnauthorized({this.details}) : super._();
+  _$AuthErrorUnauthorized({@nullable this.details}) : super._();
 
   @override
+  @nullable
   final String details;
 
   bool _didmessage = false;
@@ -1383,15 +1399,15 @@ class _$AuthErrorUnauthorized extends AuthErrorUnauthorized {
   @optionalTypeArgs
   Result when<Result extends Object>(
     Result $default(String msg, String details), {
-    @required Result invalidRequest(String details),
-    @required Result invalidClient(String details),
-    @required Result invalidScope(String details),
-    @required Result invalidGrant(String details),
-    @required Result misconfigured(String details),
-    @required Result unauthorized(String details),
-    @required Result accessDenied(String details),
-    @required Result serverError(String details),
-    @required Result unknown(String details),
+    @required Result invalidRequest(@nullable String details),
+    @required Result invalidClient(@nullable String details),
+    @required Result invalidScope(@nullable String details),
+    @required Result invalidGrant(@nullable String details),
+    @required Result misconfigured(@nullable String details),
+    @required Result unauthorized(@nullable String details),
+    @required Result accessDenied(@nullable String details),
+    @required Result serverError(@nullable String details),
+    @required Result unknown(@nullable String details),
   }) {
     assert($default != null);
     assert(invalidRequest != null);
@@ -1410,15 +1426,15 @@ class _$AuthErrorUnauthorized extends AuthErrorUnauthorized {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
     Result $default(String msg, String details), {
-    Result invalidRequest(String details),
-    Result invalidClient(String details),
-    Result invalidScope(String details),
-    Result invalidGrant(String details),
-    Result misconfigured(String details),
-    Result unauthorized(String details),
-    Result accessDenied(String details),
-    Result serverError(String details),
-    Result unknown(String details),
+    Result invalidRequest(@nullable String details),
+    Result invalidClient(@nullable String details),
+    Result invalidScope(@nullable String details),
+    Result invalidGrant(@nullable String details),
+    Result misconfigured(@nullable String details),
+    Result unauthorized(@nullable String details),
+    Result accessDenied(@nullable String details),
+    Result serverError(@nullable String details),
+    Result unknown(@nullable String details),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1480,9 +1496,11 @@ class _$AuthErrorUnauthorized extends AuthErrorUnauthorized {
 
 abstract class AuthErrorUnauthorized extends AuthError {
   AuthErrorUnauthorized._() : super._();
-  factory AuthErrorUnauthorized({String details}) = _$AuthErrorUnauthorized;
+  factory AuthErrorUnauthorized({@nullable String details}) =
+      _$AuthErrorUnauthorized;
 
   @override
+  @nullable
   String get details;
   @override
   $AuthErrorUnauthorizedCopyWith<AuthErrorUnauthorized> get copyWith;
@@ -1494,7 +1512,7 @@ abstract class $AuthErrorAccessDeniedCopyWith<$Res>
           $Res Function(AuthErrorAccessDenied) then) =
       _$AuthErrorAccessDeniedCopyWithImpl<$Res>;
   @override
-  $Res call({String details});
+  $Res call({@nullable String details});
 }
 
 class _$AuthErrorAccessDeniedCopyWithImpl<$Res>
@@ -1518,9 +1536,10 @@ class _$AuthErrorAccessDeniedCopyWithImpl<$Res>
 }
 
 class _$AuthErrorAccessDenied extends AuthErrorAccessDenied {
-  _$AuthErrorAccessDenied({this.details}) : super._();
+  _$AuthErrorAccessDenied({@nullable this.details}) : super._();
 
   @override
+  @nullable
   final String details;
 
   bool _didmessage = false;
@@ -1570,15 +1589,15 @@ class _$AuthErrorAccessDenied extends AuthErrorAccessDenied {
   @optionalTypeArgs
   Result when<Result extends Object>(
     Result $default(String msg, String details), {
-    @required Result invalidRequest(String details),
-    @required Result invalidClient(String details),
-    @required Result invalidScope(String details),
-    @required Result invalidGrant(String details),
-    @required Result misconfigured(String details),
-    @required Result unauthorized(String details),
-    @required Result accessDenied(String details),
-    @required Result serverError(String details),
-    @required Result unknown(String details),
+    @required Result invalidRequest(@nullable String details),
+    @required Result invalidClient(@nullable String details),
+    @required Result invalidScope(@nullable String details),
+    @required Result invalidGrant(@nullable String details),
+    @required Result misconfigured(@nullable String details),
+    @required Result unauthorized(@nullable String details),
+    @required Result accessDenied(@nullable String details),
+    @required Result serverError(@nullable String details),
+    @required Result unknown(@nullable String details),
   }) {
     assert($default != null);
     assert(invalidRequest != null);
@@ -1597,15 +1616,15 @@ class _$AuthErrorAccessDenied extends AuthErrorAccessDenied {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
     Result $default(String msg, String details), {
-    Result invalidRequest(String details),
-    Result invalidClient(String details),
-    Result invalidScope(String details),
-    Result invalidGrant(String details),
-    Result misconfigured(String details),
-    Result unauthorized(String details),
-    Result accessDenied(String details),
-    Result serverError(String details),
-    Result unknown(String details),
+    Result invalidRequest(@nullable String details),
+    Result invalidClient(@nullable String details),
+    Result invalidScope(@nullable String details),
+    Result invalidGrant(@nullable String details),
+    Result misconfigured(@nullable String details),
+    Result unauthorized(@nullable String details),
+    Result accessDenied(@nullable String details),
+    Result serverError(@nullable String details),
+    Result unknown(@nullable String details),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1667,9 +1686,11 @@ class _$AuthErrorAccessDenied extends AuthErrorAccessDenied {
 
 abstract class AuthErrorAccessDenied extends AuthError {
   AuthErrorAccessDenied._() : super._();
-  factory AuthErrorAccessDenied({String details}) = _$AuthErrorAccessDenied;
+  factory AuthErrorAccessDenied({@nullable String details}) =
+      _$AuthErrorAccessDenied;
 
   @override
+  @nullable
   String get details;
   @override
   $AuthErrorAccessDeniedCopyWith<AuthErrorAccessDenied> get copyWith;
@@ -1681,7 +1702,7 @@ abstract class $AuthErrorServerErrorCopyWith<$Res>
           $Res Function(AuthErrorServerError) then) =
       _$AuthErrorServerErrorCopyWithImpl<$Res>;
   @override
-  $Res call({String details});
+  $Res call({@nullable String details});
 }
 
 class _$AuthErrorServerErrorCopyWithImpl<$Res>
@@ -1705,9 +1726,10 @@ class _$AuthErrorServerErrorCopyWithImpl<$Res>
 }
 
 class _$AuthErrorServerError extends AuthErrorServerError {
-  _$AuthErrorServerError({this.details}) : super._();
+  _$AuthErrorServerError({@nullable this.details}) : super._();
 
   @override
+  @nullable
   final String details;
 
   bool _didmessage = false;
@@ -1757,15 +1779,15 @@ class _$AuthErrorServerError extends AuthErrorServerError {
   @optionalTypeArgs
   Result when<Result extends Object>(
     Result $default(String msg, String details), {
-    @required Result invalidRequest(String details),
-    @required Result invalidClient(String details),
-    @required Result invalidScope(String details),
-    @required Result invalidGrant(String details),
-    @required Result misconfigured(String details),
-    @required Result unauthorized(String details),
-    @required Result accessDenied(String details),
-    @required Result serverError(String details),
-    @required Result unknown(String details),
+    @required Result invalidRequest(@nullable String details),
+    @required Result invalidClient(@nullable String details),
+    @required Result invalidScope(@nullable String details),
+    @required Result invalidGrant(@nullable String details),
+    @required Result misconfigured(@nullable String details),
+    @required Result unauthorized(@nullable String details),
+    @required Result accessDenied(@nullable String details),
+    @required Result serverError(@nullable String details),
+    @required Result unknown(@nullable String details),
   }) {
     assert($default != null);
     assert(invalidRequest != null);
@@ -1784,15 +1806,15 @@ class _$AuthErrorServerError extends AuthErrorServerError {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
     Result $default(String msg, String details), {
-    Result invalidRequest(String details),
-    Result invalidClient(String details),
-    Result invalidScope(String details),
-    Result invalidGrant(String details),
-    Result misconfigured(String details),
-    Result unauthorized(String details),
-    Result accessDenied(String details),
-    Result serverError(String details),
-    Result unknown(String details),
+    Result invalidRequest(@nullable String details),
+    Result invalidClient(@nullable String details),
+    Result invalidScope(@nullable String details),
+    Result invalidGrant(@nullable String details),
+    Result misconfigured(@nullable String details),
+    Result unauthorized(@nullable String details),
+    Result accessDenied(@nullable String details),
+    Result serverError(@nullable String details),
+    Result unknown(@nullable String details),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1854,9 +1876,11 @@ class _$AuthErrorServerError extends AuthErrorServerError {
 
 abstract class AuthErrorServerError extends AuthError {
   AuthErrorServerError._() : super._();
-  factory AuthErrorServerError({String details}) = _$AuthErrorServerError;
+  factory AuthErrorServerError({@nullable String details}) =
+      _$AuthErrorServerError;
 
   @override
+  @nullable
   String get details;
   @override
   $AuthErrorServerErrorCopyWith<AuthErrorServerError> get copyWith;
@@ -1868,7 +1892,7 @@ abstract class $AuthErrorUnknownCopyWith<$Res>
           AuthErrorUnknown value, $Res Function(AuthErrorUnknown) then) =
       _$AuthErrorUnknownCopyWithImpl<$Res>;
   @override
-  $Res call({String details});
+  $Res call({@nullable String details});
 }
 
 class _$AuthErrorUnknownCopyWithImpl<$Res> extends _$AuthErrorCopyWithImpl<$Res>
@@ -1891,9 +1915,10 @@ class _$AuthErrorUnknownCopyWithImpl<$Res> extends _$AuthErrorCopyWithImpl<$Res>
 }
 
 class _$AuthErrorUnknown extends AuthErrorUnknown {
-  _$AuthErrorUnknown({this.details}) : super._();
+  _$AuthErrorUnknown({@nullable this.details}) : super._();
 
   @override
+  @nullable
   final String details;
 
   bool _didmessage = false;
@@ -1942,15 +1967,15 @@ class _$AuthErrorUnknown extends AuthErrorUnknown {
   @optionalTypeArgs
   Result when<Result extends Object>(
     Result $default(String msg, String details), {
-    @required Result invalidRequest(String details),
-    @required Result invalidClient(String details),
-    @required Result invalidScope(String details),
-    @required Result invalidGrant(String details),
-    @required Result misconfigured(String details),
-    @required Result unauthorized(String details),
-    @required Result accessDenied(String details),
-    @required Result serverError(String details),
-    @required Result unknown(String details),
+    @required Result invalidRequest(@nullable String details),
+    @required Result invalidClient(@nullable String details),
+    @required Result invalidScope(@nullable String details),
+    @required Result invalidGrant(@nullable String details),
+    @required Result misconfigured(@nullable String details),
+    @required Result unauthorized(@nullable String details),
+    @required Result accessDenied(@nullable String details),
+    @required Result serverError(@nullable String details),
+    @required Result unknown(@nullable String details),
   }) {
     assert($default != null);
     assert(invalidRequest != null);
@@ -1969,15 +1994,15 @@ class _$AuthErrorUnknown extends AuthErrorUnknown {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
     Result $default(String msg, String details), {
-    Result invalidRequest(String details),
-    Result invalidClient(String details),
-    Result invalidScope(String details),
-    Result invalidGrant(String details),
-    Result misconfigured(String details),
-    Result unauthorized(String details),
-    Result accessDenied(String details),
-    Result serverError(String details),
-    Result unknown(String details),
+    Result invalidRequest(@nullable String details),
+    Result invalidClient(@nullable String details),
+    Result invalidScope(@nullable String details),
+    Result invalidGrant(@nullable String details),
+    Result misconfigured(@nullable String details),
+    Result unauthorized(@nullable String details),
+    Result accessDenied(@nullable String details),
+    Result serverError(@nullable String details),
+    Result unknown(@nullable String details),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2039,9 +2064,10 @@ class _$AuthErrorUnknown extends AuthErrorUnknown {
 
 abstract class AuthErrorUnknown extends AuthError {
   AuthErrorUnknown._() : super._();
-  factory AuthErrorUnknown({String details}) = _$AuthErrorUnknown;
+  factory AuthErrorUnknown({@nullable String details}) = _$AuthErrorUnknown;
 
   @override
+  @nullable
   String get details;
   @override
   $AuthErrorUnknownCopyWith<AuthErrorUnknown> get copyWith;

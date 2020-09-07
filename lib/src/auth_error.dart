@@ -12,28 +12,36 @@ abstract class AuthError extends KakaoSdkError implements _$AuthError {
 
   factory AuthError(String msg, String details) = _AuthError;
 
-  factory AuthError.invalidRequest({String details}) = AuthErrorInvalidRequest;
+  factory AuthError.invalidRequest({@nullable String details}) =
+      AuthErrorInvalidRequest;
 
-  factory AuthError.invalidClient({String details}) = AuthErrorInvalidClient;
+  factory AuthError.invalidClient({@nullable String details}) =
+      AuthErrorInvalidClient;
 
-  factory AuthError.invalidScope({String details}) = AuthErrorInvalidScope;
+  factory AuthError.invalidScope({@nullable String details}) =
+      AuthErrorInvalidScope;
 
-  factory AuthError.invalidGrant({String details}) = AuthErrorInvalidGrant;
+  factory AuthError.invalidGrant({@nullable String details}) =
+      AuthErrorInvalidGrant;
 
   /// 설정이 올바르지 않음 (android key hash)
-  factory AuthError.misconfigured({String details}) = AuthErrorMisconfigured;
+  factory AuthError.misconfigured({@nullable String details}) =
+      AuthErrorMisconfigured;
 
   /// 앱이 요청 권한이 없음
-  factory AuthError.unauthorized({String details}) = AuthErrorUnauthorized;
+  factory AuthError.unauthorized({@nullable String details}) =
+      AuthErrorUnauthorized;
 
   /// 접근이 거부 됨 (동의 취소)
-  factory AuthError.accessDenied({String details}) = AuthErrorAccessDenied;
+  factory AuthError.accessDenied({@nullable String details}) =
+      AuthErrorAccessDenied;
 
   /// 접근이 거부 됨 (동의 취소)
-  factory AuthError.serverError({String details}) = AuthErrorServerError;
+  factory AuthError.serverError({@nullable String details}) =
+      AuthErrorServerError;
 
   /// 접근이 거부 됨 (동의 취소)
-  factory AuthError.unknown({String details}) = AuthErrorUnknown;
+  factory AuthError.unknown({@nullable String details}) = AuthErrorUnknown;
 
   @override
   String get type => TYPE;

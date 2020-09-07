@@ -1,6 +1,6 @@
-import 'package:flutter/services.dart';
+import 'package:flutter/services.dart' show PlatformException;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flutter/foundation.dart' show debugPrint;
 
 import 'kakao_login_error.dart';
 
@@ -9,26 +9,29 @@ part 'api_error.freezed.dart';
 /// API 에러
 @freezed
 abstract class ApiError extends KakaoSdkError implements _$ApiError {
-  ApiError._() : super();
+  ApiError._();
   factory ApiError(String msg, String details) = _ApiError;
 
-  factory ApiError.internalError({String details}) = ApiErrorInternalError;
-  factory ApiError.illegalParams({String details}) = ApiErrorIllegalParams;
-  factory ApiError.unsupportedApi({String details}) = ApiErrorUnsupportedApi;
-  factory ApiError.invalidAccessToken({String details}) = ApiInvalidAccessToken;
+  factory ApiError.internalError({@nullable String details}) =
+      ApiErrorInternalError;
+  factory ApiError.illegalParams({@nullable String details}) =
+      ApiErrorIllegalParams;
+  factory ApiError.unsupportedApi({@nullable String details}) =
+      ApiErrorUnsupportedApi;
+  factory ApiError.invalidAccessToken({@nullable String details}) =
+      ApiErrorInvalidAccessToken;
 
   // TODO(amond): 추가
 
-  factory ApiError.unknown({String details}) = ApiErrorUnknown;
+  factory ApiError.unknown({@nullable String details}) = ApiErrorUnknown;
 
   @late
-  @override
-  String get message => when((msg, details) => msg,
+  String get message => when((msg, _) => msg,
       internalError: (_) => "기타 서버 에러",
       illegalParams: (_) => "잘못된 파라미터",
       unsupportedApi: (_) => "지원되지 않는 API",
-      invalidAccessToken: (_) => "앱키 또는 토큰이 잘못된 경우. 예) 토큰 만료",
-      unknown: (_) => "기타 에러");
+      unknown: (_) => "기타 에러",
+      invalidAccessToken: (_) => "앱키 또는 토큰이 잘못된 경우. ex) 토큰 만료");
 
   @override
   String get type => "ApiError";
@@ -45,8 +48,10 @@ abstract class ApiError extends KakaoSdkError implements _$ApiError {
       case "InvalidAccessToken":
         return ApiError.invalidAccessToken(details: e.details);
       case "Unknown":
-      default:
         return ApiError.unknown(details: e.details);
+      default:
+        return null;
+      //return ApiError(e.code, e.details);
     }
   }
 }
