@@ -26,19 +26,21 @@ abstract class ApiError extends KakaoSdkError implements _$ApiError {
   factory ApiError.unknown({@nullable String details}) = ApiErrorUnknown;
 
   @late
-  String get message => when((msg, _) => msg,
-      internalError: (_) => "기타 서버 에러",
-      illegalParams: (_) => "잘못된 파라미터",
-      unsupportedApi: (_) => "지원되지 않는 API",
-      unknown: (_) => "기타 에러",
-      invalidAccessToken: (_) => "앱키 또는 토큰이 잘못된 경우. ex) 토큰 만료");
+  String get message => when(
+        (msg, _) => msg,
+        internalError: (_) => "기타 서버 에러",
+        illegalParams: (_) => "잘못된 파라미터",
+        unsupportedApi: (_) => "지원되지 않는 API",
+        unknown: (_) => "기타 에러",
+        invalidAccessToken: (_) => "",
+      );
 
   @override
   String get type => "ApiError";
 
   static ApiError fromPlatformException(PlatformException e) {
-    debugPrint("fromPlatformException : ${e.code}");
-    switch (e.code) {
+    debugPrint("ApiError.fromPlatformException : ${e.message}");
+    switch (e.message) {
       case "InternalError":
         return ApiError.internalError(details: e.details);
       case "IllegalParams":

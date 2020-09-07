@@ -172,11 +172,14 @@ class _$_ApiError extends _ApiError {
   String get message {
     if (_didmessage == false) {
       _didmessage = true;
-      _message = when((msg, _) => msg,
-          internalError: (_) => "기타 서버 에러",
-          illegalParams: (_) => "잘못된 파라미터",
-          unsupportedApi: (_) => "지원되지 않는 API",
-          unknown: (_) => "기타 에러");
+      _message = when(
+        (msg, _) => msg,
+        internalError: (_) => "기타 서버 에러",
+        illegalParams: (_) => "잘못된 파라미터",
+        unsupportedApi: (_) => "지원되지 않는 API",
+        unknown: (_) => "기타 에러",
+        invalidAccessToken: (_) => "",
+      );
     }
     return _message;
   }
@@ -335,11 +338,14 @@ class _$ApiErrorInternalError extends ApiErrorInternalError {
   String get message {
     if (_didmessage == false) {
       _didmessage = true;
-      _message = when((msg, _) => msg,
-          internalError: (_) => "기타 서버 에러",
-          illegalParams: (_) => "잘못된 파라미터",
-          unsupportedApi: (_) => "지원되지 않는 API",
-          unknown: (_) => "기타 에러");
+      _message = when(
+        (msg, _) => msg,
+        internalError: (_) => "기타 서버 에러",
+        illegalParams: (_) => "잘못된 파라미터",
+        unsupportedApi: (_) => "지원되지 않는 API",
+        unknown: (_) => "기타 에러",
+        invalidAccessToken: (_) => "",
+      );
     }
     return _message;
   }
@@ -496,11 +502,14 @@ class _$ApiErrorIllegalParams extends ApiErrorIllegalParams {
   String get message {
     if (_didmessage == false) {
       _didmessage = true;
-      _message = when((msg, _) => msg,
-          internalError: (_) => "기타 서버 에러",
-          illegalParams: (_) => "잘못된 파라미터",
-          unsupportedApi: (_) => "지원되지 않는 API",
-          unknown: (_) => "기타 에러");
+      _message = when(
+        (msg, _) => msg,
+        internalError: (_) => "기타 서버 에러",
+        illegalParams: (_) => "잘못된 파라미터",
+        unsupportedApi: (_) => "지원되지 않는 API",
+        unknown: (_) => "기타 에러",
+        invalidAccessToken: (_) => "",
+      );
     }
     return _message;
   }
@@ -657,11 +666,14 @@ class _$ApiErrorUnsupportedApi extends ApiErrorUnsupportedApi {
   String get message {
     if (_didmessage == false) {
       _didmessage = true;
-      _message = when((msg, _) => msg,
-          internalError: (_) => "기타 서버 에러",
-          illegalParams: (_) => "잘못된 파라미터",
-          unsupportedApi: (_) => "지원되지 않는 API",
-          unknown: (_) => "기타 에러");
+      _message = when(
+        (msg, _) => msg,
+        internalError: (_) => "기타 서버 에러",
+        illegalParams: (_) => "잘못된 파라미터",
+        unsupportedApi: (_) => "지원되지 않는 API",
+        unknown: (_) => "기타 에러",
+        invalidAccessToken: (_) => "",
+      );
     }
     return _message;
   }
@@ -819,11 +831,14 @@ class _$ApiErrorInvalidAccessToken extends ApiErrorInvalidAccessToken {
   String get message {
     if (_didmessage == false) {
       _didmessage = true;
-      _message = when((msg, _) => msg,
-          internalError: (_) => "기타 서버 에러",
-          illegalParams: (_) => "잘못된 파라미터",
-          unsupportedApi: (_) => "지원되지 않는 API",
-          unknown: (_) => "기타 에러");
+      _message = when(
+        (msg, _) => msg,
+        internalError: (_) => "기타 서버 에러",
+        illegalParams: (_) => "잘못된 파라미터",
+        unsupportedApi: (_) => "지원되지 않는 API",
+        unknown: (_) => "기타 에러",
+        invalidAccessToken: (_) => "",
+      );
     }
     return _message;
   }
@@ -980,11 +995,14 @@ class _$ApiErrorUnknown extends ApiErrorUnknown {
   String get message {
     if (_didmessage == false) {
       _didmessage = true;
-      _message = when((msg, _) => msg,
-          internalError: (_) => "기타 서버 에러",
-          illegalParams: (_) => "잘못된 파라미터",
-          unsupportedApi: (_) => "지원되지 않는 API",
-          unknown: (_) => "기타 에러");
+      _message = when(
+        (msg, _) => msg,
+        internalError: (_) => "기타 서버 에러",
+        illegalParams: (_) => "잘못된 파라미터",
+        unsupportedApi: (_) => "지원되지 않는 API",
+        unknown: (_) => "기타 에러",
+        invalidAccessToken: (_) => "",
+      );
     }
     return _message;
   }
