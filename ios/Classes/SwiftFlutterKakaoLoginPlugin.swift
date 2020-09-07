@@ -19,7 +19,9 @@ public class SwiftFlutterKakaoLoginPlugin: FlutterPluginAppLifeCycleDelegate, Fl
         result(true)
         break;
     case "logIn":
-        logIn(result: result)
+        let args = call.arguments as! [String: String]
+        let loginBehavior : String = args["loginBehavior"] ?? "KAKAO_TALK_WITH_FALLBACK"
+        logIn( loginBehavior: loginBehavior, result: result )
         break
     case "logOut":
         logOut(result: result)
@@ -42,9 +44,10 @@ public class SwiftFlutterKakaoLoginPlugin: FlutterPluginAppLifeCycleDelegate, Fl
     }
   }
 
-  private func logIn( result:  @escaping FlutterResult ) {
+    private func logIn( loginBehavior: String, result:  @escaping FlutterResult ) {
+      debugPrint("logIn via \(loginBehavior)")
       // 카카오톡 설치 여부 확인
-              if (AuthApi.isKakaoTalkLoginAvailable()) {
+              if (AuthApi.isKakaoTalkLoginAvailable() && loginBehavior != "KAKAO_ACCOUNT_ONLY" ) {
                  AuthApi.shared.loginWithKakaoTalk {(oauthToken, error) in
                       if let error = error {
                           print(error)
@@ -56,7 +59,7 @@ public class SwiftFlutterKakaoLoginPlugin: FlutterPluginAppLifeCycleDelegate, Fl
                         result(oauthToken?.toJson)
                       }
                   }
-              } else {
+              } else if ( loginBehavior != "KAKAO_TALK_ONLY" ) {
                   AuthApi.shared.loginWithKakaoAccount {(oauthToken, error) in
                       if let error = error {
                           print(error)
@@ -68,7 +71,10 @@ public class SwiftFlutterKakaoLoginPlugin: FlutterPluginAppLifeCycleDelegate, Fl
                         result(oauthToken?.toJson)
                       }
                   }
-              }
+              } else {
+                // TODO(amond): handle error
+                result(FlutterError(code: "GeneralError", message: "login behavior error", details: nil ))
+            }
   }
   private func logOut( result:  @escaping FlutterResult ) {
       UserApi.shared.logout {(error) in

@@ -3,6 +3,9 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:flutter_kakao_login/src/kakao_login_error.dart';
 import 'package:async/async.dart';
+
+import 'src/login_behavior.dart';
+export 'src/login_behavior.dart';
 export 'src/result_extension.dart';
 
 class FlutterKakaoLogin {
@@ -42,10 +45,15 @@ class FlutterKakaoLogin {
     }
   }
 
-  // Login Method
-  Future<Result<KakaoToken>> logIn() async {
+  /// 카카오 로그인
+  /// loginMethod 를 지정가능합니다.
+  /// 기본: 카카오톡 혹은 카카오계정
+  Future<Result<KakaoToken>> logIn(
+      [LoginBehavior loginBehavior =
+          LoginBehavior.KAKAO_TALK_WITH_FALLBACK]) async {
     try {
-      final result = await _channel.invokeMapMethod<String, dynamic>('logIn');
+      final result = await _channel.invokeMapMethod<String, dynamic>(
+          'logIn', {'loginBehavior': loginBehavior.string()});
       return _delayedToResult(Result.value(KakaoToken.fromJson(result)));
     } on PlatformException catch (e) {
       return Result.error(KakaoSdkError.fromPlatformException(e));
