@@ -8,6 +8,7 @@ public class SwiftFlutterKakaoLoginPlugin: FlutterPluginAppLifeCycleDelegate, Fl
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "flutter_kakao_login", binaryMessenger: registrar.messenger())
     let instance = SwiftFlutterKakaoLoginPlugin()
+    registrar.addApplicationDelegate(instance)
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
 
@@ -43,8 +44,8 @@ public class SwiftFlutterKakaoLoginPlugin: FlutterPluginAppLifeCycleDelegate, Fl
 
   private func logIn( result:  @escaping FlutterResult ) {
       // 카카오톡 설치 여부 확인
-              //if (AuthApi.isKakaoTalkLoginAvailable()) {
-              /*    AuthApi.shared.loginWithKakaoTalk {(oauthToken, error) in
+              if (AuthApi.isKakaoTalkLoginAvailable()) {
+                 AuthApi.shared.loginWithKakaoTalk {(oauthToken, error) in
                       if let error = error {
                           print(error)
                           let errorMessage = error.localizedDescription
@@ -55,8 +56,8 @@ public class SwiftFlutterKakaoLoginPlugin: FlutterPluginAppLifeCycleDelegate, Fl
                           print("loginWithKakaoTalk() success.")
                         result(oauthToken?.toJson)
                       }
-                  }*/
-              //} else {
+                  }
+              } else {
                   AuthApi.shared.loginWithKakaoAccount {(oauthToken, error) in
                       if let error = error {
                           print(error)
@@ -68,7 +69,7 @@ public class SwiftFlutterKakaoLoginPlugin: FlutterPluginAppLifeCycleDelegate, Fl
                         result(oauthToken?.toJson)
                       }
                   }
-              //}
+              }
   }
   private func logOut( result:  @escaping FlutterResult ) {
       UserApi.shared.logout {(error) in
